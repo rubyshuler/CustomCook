@@ -1,3 +1,3 @@
 class Dish < ApplicationRecord
-  has_one :Recipe
+  has_one :recipe
 end

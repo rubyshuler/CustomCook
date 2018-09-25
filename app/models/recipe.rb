@@ -1,4 +1,5 @@
 class Recipe < ApplicationRecord
-  has_many :RecipeIngredients
-  has_many :Steps
+  has_many :recipeIngredients
+  has_many :steps
+  belongs_to :dish
 end
