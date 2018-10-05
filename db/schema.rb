@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_213401) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "title"
-    t.string "image"
+    # t.string "image"
     t.string "recipe_image"
   end
 

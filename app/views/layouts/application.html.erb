@@ -19,6 +19,14 @@
       <%= link_to "new dish", new_dish_path,{ :class=>"nav_link" } %>
     </nav>
 
+    <nav class="nav">
+      <%= link_to "recipes", recipes_path,{ :class=>"nav_link" } %>
+      <%= link_to "ingredients", ingredients_path,{ :class=>"nav_link" } %>
+      <%= link_to "recipe ingredients", recipe_ingredients_path,{ :class=>"nav_link" } %>
+      <%= link_to "steps", steps_path,{ :class=>"nav_link" } %>
+      <%= link_to "dishes", dishes_path,{ :class=>"nav_link" } %>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
