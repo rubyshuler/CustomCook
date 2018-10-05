@@ -10,6 +10,15 @@
   </head>
 
   <body>
+
+    <nav class="nav">
+      <%= link_to "new recipe", new_recipe_path,{ :class=>"nav_link" } %>
+      <%= link_to "new ingredient", new_ingredient_path,{ :class=>"nav_link" } %>
+      <%= link_to "new recipe ingredient", new_recipe_ingredient_path,{ :class=>"nav_link" } %>
+      <%= link_to "new step", new_step_path,{ :class=>"nav_link" } %>
+      <%= link_to "new dish", new_dish_path,{ :class=>"nav_link" } %>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

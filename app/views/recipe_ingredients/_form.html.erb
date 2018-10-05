@@ -28,9 +28,11 @@
 
   <div class="field">
     <%= form.label :recipe_id %>
-    <%= form.number_field :recipe_id %>
-  </div>
-
+    <%#= form.number_field :recipe_id %>
+    <%= select_tag("recipe_id", Recipe.all.collect { |a| [a.name, a.id] }, {}) %>
+    </div>
+    
+    <!-- Artist.all.collect { |a| [a.name, a.id] } -->
   <div class="actions">
     <%= form.submit %>
   </div>
