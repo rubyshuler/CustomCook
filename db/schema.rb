@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_25_112235) do
+ActiveRecord::Schema.define(version: 2018_10_05_113122) do
 
   create_table "dishes", force: :cascade do |t|
     t.string "image"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_112235) do
     t.integer "origin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "title"
   end
 
   create_table "steps", force: :cascade do |t|
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_112235) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
   end
 
 end
