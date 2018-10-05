@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :recipe_image %>
+    <%= form.file_field :recipe_image %>
+  </div>
+
+  <div class="field">
     <%= form.label :portions %>
     <%= form.number_field :portions %>
   </div>
