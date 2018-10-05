@@ -29,7 +29,7 @@
   <div class="field">
     <%= form.label :recipe_id %>
     <%#= form.number_field :recipe_id %>
-    <%= select_tag("recipe_id", Recipe.all.collect { |a| [a.name, a.id] }, {}) %>
+    <%= select_tag("recipe_id", options_from_collection_for_select(@recipe, 'id', 'id')) %>
     </div>
     
     <!-- Artist.all.collect { |a| [a.name, a.id] } -->
