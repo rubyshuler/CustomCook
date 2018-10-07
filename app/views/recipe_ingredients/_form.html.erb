@@ -29,7 +29,7 @@
   <div class="field">
     <%= form.label :recipe_id %>
     <%#= form.number_field :recipe_id %>
-    <%= select("recipe_indgredient", "recipe_id", Recipe.all.collect { |a| [a.id, a.id] }, { include_blank: true }) %>
+    <%= select("recipe_indgredient", "recipe_id", Recipe.all.collect { |a| [a.title, a.id] }, { include_blank: true }) %>
     </div>
     
     <!-- Artist.all.collect { |a| [a.name, a.id] } -->
