@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Description:</strong>
+  <%= @step.description %>
+</p>
+
+<p>
   <strong>Recipe:</strong>
   <%= @step.recipe_id %>
 </p>
@@ -9,6 +14,11 @@
   <strong>Position:</strong>
   <%= @step.position %>
 </p>
+
+<div>
+  <%= image_tag(@step.step_image_url) %>
+</div>
+
 
 <%= link_to 'Edit', edit_step_path(@step) %> |
 <%= link_to 'Back', steps_path %>
