@@ -36,11 +36,12 @@
 </p>
 
 <div>
-  <% if @recipe.recipe_image_url %>
   <%= image_tag(@recipe.recipe_image_url) %>
-  <% end %>
 </div>
 
+<div>
+  <%= render partial: 'steps/step', collection: @recipe.steps.reverse %>
+</div>
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
