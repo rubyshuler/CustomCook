@@ -36,7 +36,9 @@
 </p>
 
 <div>
-  <%= image_tag(@recipe.recipe_image_url) %>
+  <% if @recipe.recipe_image_url %>
+    <%= image_tag(@recipe.recipe_image_url) %>
+  <% end %>
 </div>
 
 <div>

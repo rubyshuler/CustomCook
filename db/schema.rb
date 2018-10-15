@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2018_10_05_213401) do
 
   create_table "dishes", force: :cascade do |t|
-    t.string "image"
     t.text "review"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
