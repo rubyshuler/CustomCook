@@ -1,4 +1,6 @@
 <div>
   <p><%= step.description %></p>
-  <div><%= image_tag(@recipe.recipe_image_url) %></div>
+  <% if step.step_image_url %>
+    <%= image_tag(step.step_image_url) %>
+  <% end %>
 </div>

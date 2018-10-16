@@ -20,6 +20,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1/edit
   def edit
+    @recipe.steps.build
   end
 
   # POST /recipes
@@ -70,6 +71,6 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:title, :portions, :time, :difficulty, :nutritions, :user_id, :origin_id, :recipe_image, steps_attributes: [:description, :recipe_id, :position, :step_image])
+      params.require(:recipe).permit(:title, :portions, :time, :difficulty, :nutritions, :user_id, :origin_id, :recipe_image, steps_attributes: [:description, :recipe_id, :position, :step_image, :_destroy])
     end
 end
