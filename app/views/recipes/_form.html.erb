@@ -69,11 +69,6 @@
         <%= select("step", "recipe_id", Recipe.all.collect { |a| [a.title, a.id] }, { include_blank: true }) %>
       </div>
 
-      <div class="field">
-        <%= s.label :position %>
-        <%= s.number_field :position %>
-      </div>
-
       <div class="actions">
         <%= s.submit %>
       </div>

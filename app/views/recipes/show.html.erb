@@ -35,6 +35,25 @@
   <%= @recipe.origin_id %>
 </p>
 
+
+<% if false %>
+<% if @recipe.steps != [] %>
+<p>
+  <strong>Steps:</strong>
+</p>
+  <% @recipe.steps.each do |step| %>
+      <p>
+      Step:
+      <%= step.description %>
+      <br/>
+      Position:
+      <%= step.position %>
+      </p>
+  <% end %>
+<% end %>
+<% end %>
+
+
 <div>
   <% if @recipe.recipe_image_url %>
     <%= image_tag(@recipe.recipe_image_url) %>
