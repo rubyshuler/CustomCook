@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :ingredient_id %>
-    <%= select("recipe_indgredient", "ingredient_id", Ingredient.all.collect { |i| [i.name, i.id] }, { include_blank: true }) %>
+    <%= select("recipe_ingredient", "ingredient_id", Ingredient.all.collect { |i| [i.name, i.id] }, { include_blank: true }) %>
   </div>
 
   <div class="field">
@@ -28,8 +28,7 @@
 
   <div class="field">
     <%= form.label :recipe_id %>
-    <%#= form.number_field :recipe_id %>
-    <%= select("recipe_indgredient", "recipe_id", Recipe.all.collect { |a| [a.title, a.id] }, { include_blank: true }) %>
+    <%= select("recipe_ingredient", "recipe_id", Recipe.all.collect { |b| [b.title, b.id] }, { include_blank: true }) %>
   </div>
 
   <div class="actions">

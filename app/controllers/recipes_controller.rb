@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :fork]
 
   # GET /recipes
   # GET /recipes.json
@@ -15,12 +15,29 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+    @recipe.recipe_ingredients.build
     @recipe.steps.build
   end
 
   # GET /recipes/1/edit
   def edit
     @recipe.steps.build
+    @recipe.recipe_ingredients.build
+  end
+
+  def fork
+    @forked_recipe = @recipe.dup
+    @forked_recipe.origin_id = @recipe.id
+
+    respond_to do |format|
+      if @forked_recipe.save
+        format.html { redirect_to edit_recipe_path(@forked_recipe), notice: 'Recipe was successfully created.' }
+        format.json { render :show, status: :created, location: @forked_recipe }
+      else
+        format.html { render :new }
+        format.json { render json: @forked_recipe.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # POST /recipes
@@ -71,6 +88,6 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:title, :portions, :time, :difficulty, :nutritions, :user_id, :origin_id, :recipe_image, steps_attributes: [:description, :recipe_id, :position, :step_image, :_destroy])
+      params.require(:recipe).permit(:title, :portions, :time, :difficulty, :nutritions, :user_id, :origin_id, :recipe_image, steps_attributes: [:description, :recipe_id, :position, :step_image, :_destroy], recipe_ingredients_attributes: [:ingredient_id, :quantity, :measure, :recipe_id])
     end
 end
