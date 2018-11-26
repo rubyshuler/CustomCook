@@ -1,49 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @recipe.title %>
-</p>
-
-<p>
-  <strong>Portions:</strong>
-  <%= @recipe.portions %>
-</p>
-
-<p>
-  <strong>Time:</strong>
-  <%= @recipe.time %>
-</p>
-
-<p>
-  <strong>Difficulty:</strong>
-  <%= @recipe.difficulty %>
-</p>
-
-<p>
-  <strong>Nutritions:</strong>
-  <%= @recipe.nutritions %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @recipe.user_id %>
-</p>
-
-<p>
-  <strong>Origin:</strong>
-  <%= @recipe.origin_id %>
-</p>
-
-<div>
-  <% if @recipe.recipe_image_url %>
-    <%= image_tag(@recipe.recipe_image_url) %>
-  <% end %>
+<div class="recipe">
+  <h2>Title</h2>
+  <p><%= @recipe.title %></p>
 </div>
 
-<div>
-  <%= render partial: 'steps/step', collection: @recipe.steps %>
+<div class="recipe">
+  <h2>Portions</h2>
+  <p><%= @recipe.portions %></p>
 </div>
+
+<div class="recipe">
+  <h2>Time</h2>
+  <p><%= @recipe.time %></p>
+</div>
+
+<div class="recipe">
+  <h2>Difficulty</h2>
+  <p><%= @recipe.difficulty %></p>
+</div>
+
+<div class="recipe">
+  <h2>Nutritions</h2>
+  <p><%= @recipe.nutritions %></p>
+</div>
+
+<% if @recipe.recipe_image_url %>
+  <%= image_tag(@recipe.recipe_image_url) %>
+<% end %>
+
+
+<%= render partial: 'recipe_ingredients/recipe_ingredient', collection: @recipe.recipe_ingredients %>
+<%= render partial: 'steps/step', collection: @recipe.steps %>
+
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%= link_to 'Fork', fork_recipe_path(@recipe) %>
 <%= link_to 'Back', recipes_path %>

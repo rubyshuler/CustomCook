@@ -23,7 +23,6 @@
 
   <div class="field">
     <%= form.label :recipe_id %>
-    <!-- <%= form.number_field :recipe_id %> -->
     <%= select("step", "recipe_id", Recipe.all.collect { |a| [a.title, a.id] }, { include_blank: true }) %>
   </div>
 
