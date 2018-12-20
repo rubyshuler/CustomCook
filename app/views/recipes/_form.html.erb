@@ -46,23 +46,15 @@
     <%= form.number_field :nutritions %>
   </div>
 
-  <!-- <div class="field">
-    <h2>Состав</h2>
-
-    <a class="">
-      <%#= button_to 'New Recipe Ingredient', new_recipe_ingredient_path %>
-    </a>
-  </div> -->
-
-  <!-- <div class="field">
-    <h2>Этапы приготовления</h2>
-
-    <a class="">
-      <%#= button_to 'New Step', new_step_path %>
-    </a>
-  </div> -->
-
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+<div class="">
+  <%= link_to 'New Recipe Ingredient', new_recipe_ingredient_path %>
+</div>
+
+<div class="">
+  <%= link_to 'New Step', new_step_path %>
+</div>

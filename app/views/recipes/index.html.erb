@@ -6,7 +6,7 @@
   <%= link_to recipe, {:action => 'show', :id => recipe.id} do -%>
     <div class="card">
 
-      <div class="card_info">
+
         <div class="image">
           <%= image_tag(recipe.recipe_image_url.to_s) %>
         </div>
@@ -18,7 +18,7 @@
           <p><%= recipe.time %> мин</p>
           <p><%= recipe.difficulty %></p>
         </div>
-      </div>
+
       </div>
     <% end %>
   <% end %>
@@ -33,4 +33,10 @@
   <% end %>
 </section>
 
-<footer></footer>
+<footer>
+  <hr>
+  <div class="social">
+    <p>У нас еще есть соц сети</p>
+    <%= image_tag('social.png') %>
+  </div>
+</footer>

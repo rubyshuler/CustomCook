@@ -9,7 +9,7 @@
 
 section {
   margin: 0 auto;
-  width: 1200px;
+  width: 1026px;
 
 
 	display: flex;
@@ -32,7 +32,13 @@ section {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
+      img {
+        width: 87px;
+        height: 82px;
+      }
     }
+
   }
 }
 
@@ -41,44 +47,53 @@ section {
 
   display: flex;
 	flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  width: 206px;
-  height: 305px;
+
+  width: 239px;
+  height: 330px;
   border-radius: 21px;
   box-shadow: 0px 2px 15px 5px rgba(0,0,0,0.11);
 
-  .card_info {
-    width: 192px;
-    .image {
-      background-size: cover;
-      margin: 20px auto 0;
-      width: 140px;
-      height: 140px;
+    img {
+      display: flex;
+
+      object-fit: cover;
+      object-position: center;
+
+      width: 156px;
+      height: 156px;
+      // margin: 32px auto 0;s
 
       clip-path: circle(48% at 50% 50%);
       overflow: hidden;
     }
 
+
     h2 {
-      font-size: 18px;
       margin-top: 20px;
-      width: 206px;
+      font-size: 18px;
+      line-height: 21px;
       text-align: center;
+      margin-left: 24px;
+      margin-right: 24px;
     }
 
     p {
       font-size: 12px;
-      margin-top: 5px;
+      margin-top: 4px;
+      padding-left: 8px;
+      padding-right: 8px;
     }
 
     .recipe_attr {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
 
       margin-left: 20px;
       margin-right: 20px;
     }
-  }
 
 }
 
@@ -91,10 +106,30 @@ section {
 }
 
 footer {
+  position: absolute;
+
   bottom: 0;
-  margin-top: 50px;
-  height: 50px;
-  background-color: pink;
+  width: 100%;
+  height: 96px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: white;
+
+    p {
+      color: #CDCDCD;
+    }
+
+    img {
+      margin-top: -8px;
+      width: 93px;
+      height: 22px;
+    }
+  }
 }
 
 .therecipe {
@@ -107,12 +142,13 @@ footer {
 
       font-style: bold;
     }
-
-    img {
-      margin-top: 24px;
-
-      width: 278px;
-      height: 496px;
+    .image {
+      img {
+        object-fit: none;
+        object-position: center;
+        width: auto;
+        height: 496px;
+      }
     }
 
     h2 {
