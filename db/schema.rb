@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_10_05_213401) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "dishes", force: :cascade do |t|
     t.text "review"
     t.datetime "created_at", null: false
@@ -36,7 +39,6 @@ ActiveRecord::Schema.define(version: 2018_10_05_213401) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.text "title"
     t.integer "portions"
     t.integer "time"
     t.integer "difficulty"
@@ -45,6 +47,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_213401) do
     t.integer "origin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "title"
     t.string "recipe_image"
   end
 
