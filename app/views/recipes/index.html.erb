@@ -15,11 +15,9 @@
 
         <div class="recipe_attr">
           <p><%= recipe.nutritions %> ккал</p>
-          <p><%= recipe.time %> мин</p>
-          <p><%= recipe.difficulty %></p>
+          <p class="clock"><span><%= image_tag('clock.svg') %></span><%= recipe.time %> мин</p>
+          <p><%= recipe.difficulty %> уровень</p>
         </div>
-
-        <a><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></a>
       </div>
     <% end %>
   <% end %>
@@ -33,6 +31,8 @@
     </div>
   <% end %>
 </section>
+
+<footer></footer>
 
 <!-- <footer>
   <hr>

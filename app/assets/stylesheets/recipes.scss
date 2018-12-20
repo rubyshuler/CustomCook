@@ -89,10 +89,18 @@ section {
 
     .recipe_attr {
       display: flex;
-      justify-content: center;
-
       margin-left: 20px;
       margin-right: 20px;
+
+      .clock {
+        display: flex;
+        align-items: center;
+        img {
+          margin-right: 2px;
+          width: 10px;
+          height: 10px;
+        }
+      }
     }
 
 }
@@ -103,6 +111,11 @@ section {
     width: 378px;
     height: 496px;
   }
+}
+
+footer {
+  height: 64px;
+  width: 100vw;
 }
 
 // footer {
