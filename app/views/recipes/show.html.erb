@@ -7,9 +7,10 @@
     <%= image_tag(@recipe.recipe_image_url.to_s) %>
   </div>
 
-  <p><%= @recipe.recipe_description %>ккал</p>
+  <p><%= @recipe.recipe_description %></p>
 
   <h2>Общая информация</h2>
+
   <div class="info">
     <p><%= @recipe.nutritions %>ккал</p>
     <p><%= @recipe.time %>мин</p>
