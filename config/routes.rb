@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'recipes#index'
   resources :steps
   resources :dishes
   resources :ingredients

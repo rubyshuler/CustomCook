@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EDADa</title>
+    <title>EDA-Da</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,21 +11,16 @@
 
   <body>
 
-    <nav class="nav">
-      <%= link_to "new recipe", new_recipe_path,{ :class=>"nav_link" } %>
-      <%= link_to "new ingredient", new_ingredient_path,{ :class=>"nav_link" } %>
-      <%= link_to "new recipe ingredient", new_recipe_ingredient_path,{ :class=>"nav_link" } %>
-      <%= link_to "new step", new_step_path,{ :class=>"nav_link" } %>
-      <%= link_to "new dish", new_dish_path,{ :class=>"nav_link" } %>
-    </nav>
+    <nav>
+      <div class="logo">        
+        <%= link_to root_path do %>
+        <%= image_tag('logo.png') %>
+        <% end %>
+      </div>
 
-    <nav class="nav">
-      <%= link_to "recipes", recipes_path,{ :class=>"nav_link" } %>
-      <%= link_to "ingredients", ingredients_path,{ :class=>"nav_link" } %>
-      <%= link_to "recipe ingredients", recipe_ingredients_path,{ :class=>"nav_link" } %>
-      <%= link_to "steps", steps_path,{ :class=>"nav_link" } %>
-      <%= link_to "dishes", dishes_path,{ :class=>"nav_link" } %>
+      <!-- <div class="avatar"></div> -->
     </nav>
+    <hr>
 
     <%= yield %>
   </body>

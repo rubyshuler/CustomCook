@@ -2,27 +2,25 @@
 
 <h1>Steps</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Recipe</th>
-      <th>Position</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<section>
+  <% @steps.each do |step| %>
+  <div class="card">
+    <div class="">
+      <h2>Recipe_id</h2>
+      <p><%= step.recipe_id %></p>
+    </div>
 
-  <tbody>
-    <% @steps.each do |step| %>
-      <tr>
-        <td><%= step.recipe_id %></td>
-        <td><%= step.position %></td>
-        <td><%= link_to 'Show', step %></td>
-        <td><%= link_to 'Edit', edit_step_path(step) %></td>
-        <td><%= link_to 'Destroy', step, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="">
+      <h2>Position</h2>
+      <p><%= step.position %></p>
+    </div>
+
+    <a><%= link_to 'Show', step %></a>
+    <a><%= link_to 'Edit', edit_step_path(step) %></a>
+    <a><%= link_to 'Destroy', step, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+  </div>
+  <% end %>
+</section>
 
 <br>
 

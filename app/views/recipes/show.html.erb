@@ -1,100 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<<<<<<< HEAD
-<p>
-  <strong>Title:</strong>
-  <%= @recipe.title %>
-</p>
+<div class="therecipe">
+  <h1><%= @recipe.title %></h1>
 
-<p>
-  <strong>Portions:</strong>
-  <%= @recipe.portions %>
-</p>
+  <div class="image">
+    <%= image_tag(@recipe.recipe_image_url.to_s) %>
+  </div>
 
-<p>
-  <strong>Time:</strong>
-  <%= @recipe.time %>
-</p>
+  <p>description</p>
 
-<p>
-  <strong>Difficulty:</strong>
-  <%= @recipe.difficulty %>
-</p>
+  <h2>Общая информация</h2>
+  <div class="info">
+    <p><%= @recipe.nutritions %>ккал</p>
+    <p><%= @recipe.time %>мин</p>
+    <p><%= @recipe.difficulty %></p>
+  </div>
 
-<p>
-  <strong>Nutritions:</strong>
-  <%= @recipe.nutritions %>
-</p>
+  <h2>Ингредиенты</h2>
+  <p>Порции: <%= @recipe.portions %></p>
+  <section class="recipe_ingredients">
+    <%= render partial: 'recipe_ingredients/recipe_ingredient', collection: @recipe.recipe_ingredients %>
+  </section>
 
-<p>
-  <strong>User:</strong>
-  <%= @recipe.user_id %>
-</p>
-
-<p>
-  <strong>Origin:</strong>
-  <%= @recipe.origin_id %>
-</p>
-
-
-<% if false %>
-<% if @recipe.steps != [] %>
-<p>
-  <strong>Steps:</strong>
-</p>
-  <% @recipe.steps.each do |step| %>
-      <p>
-      Step:
-      <%= step.description %>
-      <br/>
-      Position:
-      <%= step.position %>
-      </p>
-  <% end %>
-<% end %>
-<% end %>
-
-
-<div>
-  <% if @recipe.recipe_image_url %>
-    <%= image_tag(@recipe.recipe_image_url) %>
-  <% end %>
-=======
-<div class="recipe">
-  <h2>Title</h2>
-  <p><%= @recipe.title %></p>
->>>>>>> creating_fork
+  <h2>Инструкция приготовления</h2>
+  <%= render partial: 'steps/step', collection: @recipe.steps %>
 </div>
 
-<div class="recipe">
-  <h2>Portions</h2>
-  <p><%= @recipe.portions %></p>
-</div>
-
-<div class="recipe">
-  <h2>Time</h2>
-  <p><%= @recipe.time %></p>
-</div>
-
-<div class="recipe">
-  <h2>Difficulty</h2>
-  <p><%= @recipe.difficulty %></p>
-</div>
-
-<div class="recipe">
-  <h2>Nutritions</h2>
-  <p><%= @recipe.nutritions %></p>
-</div>
-
-<% if @recipe.recipe_image_url %>
-  <%= image_tag(@recipe.recipe_image_url) %>
-<% end %>
-
-
-<%= render partial: 'recipe_ingredients/recipe_ingredient', collection: @recipe.recipe_ingredients %>
-<%= render partial: 'steps/step', collection: @recipe.steps %>
-
-
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Fork', fork_recipe_path(@recipe) %>
-<%= link_to 'Back', recipes_path %>
+<%#= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%#= link_to 'Fork', fork_recipe_path(@recipe) %>
+<%#= link_to 'Back', recipes_path %>

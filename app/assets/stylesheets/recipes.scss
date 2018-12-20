@@ -2,7 +2,109 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div {
+// a {
+//   display: flex;
+//   align-items: baseline;
+// }
+
+section {
+  margin: 0 auto;
+  width: 1200px;
+
+
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+
+}
+
+.card {
+  margin-top: 50px;
+
   display: flex;
-  align-items: baseline;
+	flex-direction: column;
+
+  width: 206px;
+  height: 305px;
+  box-shadow: 0px 2px 15px 5px rgba(0,0,0,0.11);
+
+  .image {
+    background-size: cover;
+    margin: 20px auto 0;
+    width: 140px;
+    height: 140px;
+
+    clip-path: circle(48% at 50% 50%);
+    overflow: hidden;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-top: 20px;
+    width: 206px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  .recipe_attr {
+    display: flex;
+    justify-content: space-between;
+
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+}
+
+.recipe {
+  img {
+    background-size: cover;
+    width: 378px;
+    height: 496px;
+  }
+}
+
+footer {
+  bottom: 0;
+  margin-top: 50px;
+  height: 50px;
+  background-color: pink;
+}
+
+.therecipe {
+  margin: 0 auto;
+  width: 768px;
+
+    h1 {
+      font-size: 32px;
+      margin-top: 64px;
+
+      font-style: bold;
+    }
+
+    img {
+      margin-top: 24px;
+
+      width: 278px;
+      height: 496px;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-style: normal;
+      margin-top: 32px;
+    }
+
+    .info {
+      display: flex;
+      margin-top: 24px;
+
+      p {
+        margin-right: 64px;
+      }
+    }
 }

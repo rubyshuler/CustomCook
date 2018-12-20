@@ -2,31 +2,35 @@
 
 <h1>Recipe Ingredients</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Ingredient</th>
-      <th>Quantity</th>
-      <th>Measure</th>
-      <th>Recipe</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<section>
+  <% @recipe_ingredients.each do |recipe_ingredient| %>
+    <div class="card">
+      <div class="">
+        <h2>Ingredient_id</h2>
+        <p><%= recipe_ingredient.ingredient_id %></p>
+      </div>
 
-  <tbody>
-    <% @recipe_ingredients.each do |recipe_ingredient| %>
-      <tr>
-        <td><%= recipe_ingredient.ingredient_id %></td>
-        <td><%= recipe_ingredient.quantity %></td>
-        <td><%= recipe_ingredient.measure %></td>
-        <td><%= recipe_ingredient.recipe_id %></td>
-        <td><%= link_to 'Show', recipe_ingredient %></td>
-        <td><%= link_to 'Edit', edit_recipe_ingredient_path(recipe_ingredient) %></td>
-        <td><%= link_to 'Destroy', recipe_ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="">
+        <h2>Quantity</h2>
+        <p><%= recipe_ingredient.quantity %></p>
+      </div>
+
+      <div class="">
+        <h2>Measure</h2>
+        <p><%= recipe_ingredient.measure %></p>
+      </div>
+
+      <div class="">
+        <h2>Recipe_id</h2>
+        <p><%= recipe_ingredient.recipe_id %></p>
+      </div>
+
+      <a><%= link_to 'Show', recipe_ingredient %></a>
+      <a><%= link_to 'Edit', edit_recipe_ingredient_path(recipe_ingredient) %></a>
+      <a><%= link_to 'Destroy', recipe_ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+    </div>
+  <% end %>
+</section>
 
 <br>
 

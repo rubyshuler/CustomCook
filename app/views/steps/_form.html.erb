@@ -12,23 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <p>
+      <%= form.label :recipe_id %>
+      <%= select("step", "recipe_id", Recipe.all.collect { |a| [a.title, a.id] }, { include_blank: true }) %>
+    </p>
   </div>
 
   <div class="field">
-    <%= form.label :step_image %>
-    <%= form.file_field :step_image %>
+    <p>
+      <%= form.label :step_image %>
+      <%= form.file_field :step_image %>
+    </p>
   </div>
 
   <div class="field">
-    <%= form.label :recipe_id %>
-    <%= select("step", "recipe_id", Recipe.all.collect { |a| [a.title, a.id] }, { include_blank: true }) %>
+    <p>
+      <%= form.label :description %>
+      <%= form.text_field :description %>
+    </p>
   </div>
 
   <div class="field">
-    <%= form.label :position %>
-    <%= form.number_field :position %>
+    <p>
+      <%= form.label :position %>
+      <%= form.number_field :position %>
+    </p>
   </div>
 
   <div class="actions">

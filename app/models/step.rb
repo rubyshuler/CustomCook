@@ -3,7 +3,4 @@ class Step < ApplicationRecord
 
   has_many :step_images
   belongs_to :recipe, optional: true
-  validates :recipe, presence: true
-
-  after_create: step_count
 end

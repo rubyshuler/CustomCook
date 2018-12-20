@@ -1,24 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Ingredient:</strong>
-  <%= @recipe_ingredient.ingredient_id %>
-</p>
+<div class="recipe_ingredients">
+  <p><%= Ingredient.find(@recipe_ingredient.ingredient_id).name %></p>
+  <p><%= @recipe_ingredient.quantity %></p>
+  <p><%= @recipe_ingredient.measure %></p>
+</div>
 
-<p>
-  <strong>Quantity:</strong>
-  <%= @recipe_ingredient.quantity %>
-</p>
-
-<p>
-  <strong>Measure:</strong>
-  <%= @recipe_ingredient.measure %>
-</p>
-
-<p>
-  <strong>Recipe:</strong>
-  <%= @recipe_ingredient.recipe_id %>
-</p>
 
 <%= link_to 'Edit', edit_recipe_ingredient_path(@recipe_ingredient) %> |
 <%= link_to 'Back', recipe_ingredients_path %>

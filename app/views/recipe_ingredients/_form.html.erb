@@ -12,23 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :ingredient_id %>
-    <%= select("recipe_ingredient", "ingredient_id", Ingredient.all.collect { |i| [i.name, i.id] }, { include_blank: true }) %>
+    <p>
+      <%= form.label :recipe_id %>
+      <%= select("recipe_ingredient", "recipe_id", Recipe.all.collect { |b| [b.title, b.id] }, { include_blank: true }) %>
+    </p>
   </div>
 
   <div class="field">
-    <%= form.label :quantity %>
-    <%= form.text_field :quantity %>
+    <p>
+      <%= form.label :ingredient_id %>
+      <%= select("recipe_ingredient", "ingredient_id", Ingredient.all.collect { |i| [i.name, i.id] }, { include_blank: true }) %>
+    </p>
   </div>
 
   <div class="field">
-    <%= form.label :measure %>
-    <%= form.text_field :measure %>
+    <p>
+      <%= form.label :quantity %>
+      <%= form.text_field :quantity %>
+    </p>
   </div>
 
   <div class="field">
-    <%= form.label :recipe_id %>
-    <%= select("recipe_ingredient", "recipe_id", Recipe.all.collect { |b| [b.title, b.id] }, { include_blank: true }) %>
+    <p>
+      <%= form.label :measure %>
+      <%= form.text_field :measure %>
+    </p>
   </div>
 
   <div class="actions">

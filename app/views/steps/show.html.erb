@@ -5,19 +5,11 @@
   <%= @step.description %>
 </p>
 
-<p>
-  <strong>Recipe:</strong>
-  <%= @step.recipe_id %>
-</p>
-
-<p>
-  <strong>Position:</strong>
-  <%= @step.position %>
-</p>
+<h2>Шаг <%= @step.position %></h2>
 
 <div>
   <% if @step.step_image_url %>
-    <%= image_tag(@step.step_image_url) %>
+    <%= image_tag(@step.step_image_url.to_s) %>
   <% end %>
 </div>
 
