@@ -19,6 +19,7 @@
           <p><%= recipe.difficulty %></p>
         </div>
 
+        <a><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></a>
       </div>
     <% end %>
   <% end %>
@@ -33,10 +34,10 @@
   <% end %>
 </section>
 
-<footer>
+<!-- <footer>
   <hr>
   <div class="social">
     <p>У нас еще есть соц сети</p>
-    <%= image_tag('social.png') %>
+    <%#= image_tag('social.png') %>
   </div>
-</footer>
+</footer> -->
