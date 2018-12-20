@@ -43,7 +43,7 @@
  }
  body {
   margin: 0;
- 	line-height: 1;
+ 	/* line-height: 1; */
  }
  ol, ul {
  	list-style: none;
@@ -64,3 +64,6 @@
  a {
    text-decoration: none;
  }
+
+ a:visited { color: black; }
+ a:active { color: black; }

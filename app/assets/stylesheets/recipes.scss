@@ -16,6 +16,24 @@ section {
 	justify-content: space-around;
 	flex-wrap: wrap;
 
+  .add_recipe {
+    background-color: #FAFAFA;
+    box-shadow: 0px 2px 15px 5px rgba(0,0,0,0);
+    color: #505D68;
+    display: flex;
+    justify-content: center;
+
+    h2 {
+      text-align: center;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }
 
 .card {
@@ -26,36 +44,40 @@ section {
 
   width: 206px;
   height: 305px;
+  border-radius: 21px;
   box-shadow: 0px 2px 15px 5px rgba(0,0,0,0.11);
 
-  .image {
-    background-size: cover;
-    margin: 20px auto 0;
-    width: 140px;
-    height: 140px;
+  .card_info {
+    width: 192px;
+    .image {
+      background-size: cover;
+      margin: 20px auto 0;
+      width: 140px;
+      height: 140px;
 
-    clip-path: circle(48% at 50% 50%);
-    overflow: hidden;
-  }
+      clip-path: circle(48% at 50% 50%);
+      overflow: hidden;
+    }
 
-  h2 {
-    font-size: 18px;
-    margin-top: 20px;
-    width: 206px;
-    text-align: center;
-  }
+    h2 {
+      font-size: 18px;
+      margin-top: 20px;
+      width: 206px;
+      text-align: center;
+    }
 
-  p {
-    font-size: 12px;
-    margin-top: 5px;
-  }
+    p {
+      font-size: 12px;
+      margin-top: 5px;
+    }
 
-  .recipe_attr {
-    display: flex;
-    justify-content: space-between;
+    .recipe_attr {
+      display: flex;
+      justify-content: space-between;
 
-    margin-left: 20px;
-    margin-right: 20px;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
   }
 
 }

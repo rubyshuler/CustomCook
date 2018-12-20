@@ -6,19 +6,30 @@
   <%= link_to recipe, {:action => 'show', :id => recipe.id} do -%>
     <div class="card">
 
-      <div class="image">
-        <%= image_tag(recipe.recipe_image_url.to_s) %>
+      <div class="card_info">
+        <div class="image">
+          <%= image_tag(recipe.recipe_image_url.to_s) %>
+        </div>
+
+        <h2><%= recipe.title %></h2>
+
+        <div class="recipe_attr">
+          <p><%= recipe.nutritions %> ккал</p>
+          <p><%= recipe.time %> мин</p>
+          <p><%= recipe.difficulty %></p>
+        </div>
       </div>
+      </div>
+    <% end %>
+  <% end %>
 
-      <h2><%= recipe.title %></h2>
-
-      <div class="recipe_attr">
-        <p><%= recipe.nutritions %> ккал</p>
-        <p><%= recipe.time %> мин</p>
-        <p><%= recipe.difficulty %></p>
+  <%= link_to new_recipe_path, {:action => 'create'} do %>
+    <div class="card add_recipe">
+      <div class="info">
+        <h2>Создать новый рецепт</h2>
+        <%= image_tag('add.svg') %>
       </div>
     </div>
-    <% end %>
   <% end %>
 </section>
 

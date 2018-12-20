@@ -22,6 +22,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
     <%= form.label :portions %>
     <%= form.number_field :portions %>
   </div>
@@ -56,7 +61,6 @@
       <%#= button_to 'New Step', new_step_path %>
     </a>
   </div> -->
-
 
   <div class="actions">
     <%= form.submit %>
