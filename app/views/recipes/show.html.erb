@@ -26,10 +26,13 @@
   <h2>Инструкция приготовления</h2>
   <%= render partial: 'steps/step', collection: @recipe.steps %>
 
-  <a><%= link_to 'Destroy', @recipe, method: :delete, data: { confirm: 'Are you sure?' } %></a>
-  <a><%= link_to 'Edit', edit_recipe_path(@recipe) %></a>
+  <div class="links">
+    <a><%= link_to 'Destroy', @recipe, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+    <a><%= link_to 'Edit', edit_recipe_path(@recipe) %></a>
+    <a><%= link_to 'Fork', fork_recipe_path(@recipe) %></a>
+  </div>
 </div>
 
-<%#= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%#= link_to 'Edit', edit_recipe_path(@recipe) %> 
 <%#= link_to 'Fork', fork_recipe_path(@recipe) %>
 <%#= link_to 'Back', recipes_path %>
