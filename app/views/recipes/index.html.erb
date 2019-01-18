@@ -22,22 +22,16 @@
     <% end %>
   <% end %>
 
-  <%= link_to new_recipe_path, {:action => 'create'} do %>
-    <div class="card add_recipe">
-      <div class="info">
-        <h2>Создать новый рецепт</h2>
-        <%= image_tag('add.svg') %>
+  <% if can? :create, Recipe %>
+    <%= link_to new_recipe_path, {:action => 'create'} do %>
+      <div class="card add_recipe">
+        <div class="info">
+          <h2>Создать новый рецепт</h2>
+          <%= image_tag('add.svg') %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </section>
 
 <footer></footer>
-
-<!-- <footer>
-  <hr>
-  <div class="social">
-    <p>У нас еще есть соц сети</p>
-    <%#= image_tag('social.png') %>
-  </div>
-</footer> -->
