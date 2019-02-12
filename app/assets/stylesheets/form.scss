@@ -1,0 +1,35 @@
+/* h2 + p {
+  padding-left: 10px;
+} */
+
+.form {
+  margin: 0 auto;
+  width: 384px;
+  flex-direction: column;
+
+  a {
+    margin-top: 16px;
+  }
+}
+
+.field {
+  // width: 600px;
+  height: 64px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  margin-top: 8px;
+
+  #recipe_recipe_image {
+    width: auto;
+    height: 24px;
+  }
+
+  input {
+    width: 384px;
+    height: 32px;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+}
