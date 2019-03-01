@@ -5,6 +5,7 @@ class Recipe < ApplicationRecord
   has_many :recipe_ingredients
   has_many :steps
   has_many :recipe_images
+  has_one :user
 
   accepts_nested_attributes_for :steps
   accepts_nested_attributes_for :recipe_ingredients

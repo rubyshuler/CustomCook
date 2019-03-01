@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<section class="profile">
+  <div class="avatar"></div>
+
+  <div class="info">
+    <div class="">
+      <h3><%= current_user.username %></h3>
+
+      <span class="button">
+        <% if can? :manage, User %>
+        <%= link_to "Редактировать профиль", edit_user_registration_path(current_user) %>
+        <% end %>
+      </span>
+    </div>
+
+    <div class="">
+      <h3>Подписчики</h3>
+      <h3>Подписки</h3>
+    </div>
+
+  </div>
+
+</section>
+
+<section>
+  <% current_user.recipes.each do |recipe| %>
+  <%= link_to recipe, {:action => 'show', :id => recipe.id} do -%>
+    <div class="card">
+
+
+        <div class="image">
+          <%= image_tag(recipe.recipe_image_url.to_s) %>
+        </div>
+
+        <h2><%= recipe.title %></h2>
+
+        <div class="recipe_attr">
+          <p><%= recipe.nutritions %>ккал</p>
+          <p class="clock"><span><%= image_tag('clock.svg') %></span><%= recipe.time %>мин</p>
+          <p><%= recipe.difficulty %>уровень</p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% if can? :create, Recipe %>
+    <%= link_to new_recipe_path, {:action => 'create'} do %>
+      <div class="card add_recipe">
+        <div class="info">
+          <h2>Создать новый рецепт</h2>
+          <%= image_tag('add.svg') %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</section>
+
+<footer></footer>
