@@ -14,7 +14,6 @@
   <tbody>
     <% @dishes.each do |dish| %>
       <tr>
-        <td><%= dish.image %></td>
         <td><%= dish.review %></td>
         <td><%= link_to 'Show', dish %></td>
         <td><%= link_to 'Edit', edit_dish_path(dish) %></td>

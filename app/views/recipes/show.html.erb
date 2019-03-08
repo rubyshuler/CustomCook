@@ -1,24 +1,20 @@
 <p id="notice"><%= notice %></p>
 
+<%=
+  react_component 'Recipe', {
+    title: @recipe.title,
+    recipe_image_url: @recipe.recipe_image_url.to_s,
+    recipe_description: @recipe.recipe_description,
+    nutritions: @recipe.nutritions,
+    time: @recipe.time,
+    difficulty: @recipe.difficulty,
+    portions: @recipe.portions
+  }
+%>
+
 <div class="therecipe">
-  <h1><%= @recipe.title %></h1>
 
-  <div class="image">
-    <%= image_tag(@recipe.recipe_image_url.to_s) %>
-  </div>
-
-  <p><%= @recipe.recipe_description %></p>
-
-  <h2>Общая информация</h2>
-
-  <div class="info">
-    <p><%= @recipe.nutritions %>ккал</p>
-    <p><%= @recipe.time %>мин</p>
-    <p><%= @recipe.difficulty %></p>
-  </div>
-
-  <h2>Ингредиенты</h2>
-  <p>Порции: <%= @recipe.portions %></p>
+  <h2>Инструкция приготовления</h2>
   <section class="recipe_ingredients">
     <%= render partial: 'recipe_ingredients/recipe_ingredient', collection: @recipe.recipe_ingredients %>
   </section>
@@ -46,6 +42,12 @@
     </a>
   </div>
 </div>
+
+<h3>Приготовлено</h3>
+
+<%= render partial: 'dishes/dish', collection: @recipe.dishes %>
+<h3><%= link_to 'Cooked it', new_dish_path %></h3>
+
 
 <%#= link_to 'Edit', edit_recipe_path(@recipe) %>
 <%#= link_to 'Fork', fork_recipe_path(@recipe) %>

@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root 'recipes#index'
-  # get 'users/show'
-  get '/:username', to: 'users#show', as: :username
 
+  # devise_for :users, :path_prefix => 'd'
   devise_for :users
+  get 'users/:id' => 'users#show'
+  # get '/:username', to: 'users#show', as: :username
 
   resources :steps
   resources :dishes
@@ -19,7 +20,3 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-
-
-# get '/:username',      to: 'users#show', as: 'user_by_username'
-# get '/:username/edit', to: 'users#edit', as: 'edit_user_by_username'

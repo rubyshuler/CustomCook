@@ -28,6 +28,9 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'webpacker'
+gem 'react-rails'
+
 gem 'carrierwave', '~> 1.0'
 gem 'devise'
 gem 'cancancan', '~> 2.0'

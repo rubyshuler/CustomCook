@@ -8,4 +8,8 @@ class User < ApplicationRecord
   # validates :username, uniqueness: true
 
   has_many :recipes
+
+  # def to_param
+  #   username
+  # end
 end

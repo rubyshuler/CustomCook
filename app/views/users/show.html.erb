@@ -5,11 +5,11 @@
 
   <div class="info">
     <div class="">
-      <h3><%= current_user.username %></h3>
+      <h3><%= @user.username %></h3>
 
       <span class="button">
         <% if can? :manage, User %>
-        <%= link_to "Редактировать профиль", edit_user_registration_path(current_user) %>
+          <%= link_to "Редактировать профиль", edit_user_registration_path(current_user) %>
         <% end %>
       </span>
     </div>
@@ -24,7 +24,7 @@
 </section>
 
 <section>
-  <% current_user.recipes.each do |recipe| %>
+  <% @user.recipes.each do |recipe| %>
   <%= link_to recipe, {:action => 'show', :id => recipe.id} do -%>
     <div class="card">
 

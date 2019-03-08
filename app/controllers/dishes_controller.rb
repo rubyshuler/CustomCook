@@ -26,6 +26,9 @@ class DishesController < ApplicationController
   def create
     @dish = Dish.new(dish_params)
 
+    @dish.user_id = current_user.id
+    # @dish.recipe_id = Recipe.find(params[:recipe_id])
+
     respond_to do |format|
       if @dish.save
         format.html { redirect_to @dish, notice: 'Dish was successfully created.' }
@@ -69,6 +72,6 @@ class DishesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dish_params
-      params.require(:dish).permit(:image, :review, :dish_image)
+      params.require(:dish).permit(:image, :review, :dish_image, :recipe_id, :user_id )
     end
 end

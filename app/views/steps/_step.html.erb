@@ -1,9 +1,6 @@
-<div class="step">
-  <p><%= step.description %></p>
-
-  <div class="">
-    <% if step.step_image_url %>
-    <%= image_tag(step.step_image_url.to_s) %>
-    <% end %>
-  </div>
-</div>
+<%=
+  react_component 'Step', {
+    description: step.description,
+    step_image_url: step.step_image_url.to_s
+  }
+%>

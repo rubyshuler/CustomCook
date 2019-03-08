@@ -11,10 +11,10 @@
     </div>
   <% end %>
 
-  <!-- <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image %>
-  </div> -->
+  <div class="field">
+    <%= form.label :recipe_id %>
+    <%= select("dish", "recipe_id", Recipe.all.collect { |a| [a.title, a.id] }, { include_blank: true }) %>
+  </div>
 
   <div class="field">
     <%= form.label :dish_image %>
