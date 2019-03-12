@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'webpacker'
 gem 'react-rails'
+gem 'jquery-rails'
 
 gem 'carrierwave', '~> 1.0'
 gem 'devise'

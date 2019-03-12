@@ -14,13 +14,13 @@
 
 <div class="therecipe">
 
-  <h2>Инструкция приготовления</h2>
   <section class="recipe_ingredients">
     <%= render partial: 'recipe_ingredients/recipe_ingredient', collection: @recipe.recipe_ingredients %>
   </section>
 
   <h2>Инструкция приготовления</h2>
   <%= render partial: 'steps/step', collection: @recipe.steps %>
+  <%= render partial: 'steps/newStep' %>
 
   <div class="links">
     <a>

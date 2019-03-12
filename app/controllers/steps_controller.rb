@@ -29,7 +29,8 @@ class StepsController < ApplicationController
 
     respond_to do |format|
       if @step.save
-        format.html { redirect_to @step, notice: 'Step was successfully created.' }
+        # format.html { redirect_to @step, notice: 'Step was successfully created.' }
+        format.js
         format.json { render :show, status: :created, location: @step }
       else
         format.html { render :new }
@@ -70,6 +71,7 @@ class StepsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def step_params
+      # params.require(:step).permit(:description, :recipe_id, :position, :step_image)
       params.require(:step).permit(:description, :recipe_id, :position, :step_image)
     end
 end

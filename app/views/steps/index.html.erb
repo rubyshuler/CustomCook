@@ -4,24 +4,26 @@
 
 <section>
   <% @steps.each do |step| %>
-  <div class="card">
-    <div class="">
-      <h2>Recipe_id</h2>
-      <p><%= step.recipe_id %></p>
-    </div>
+    <%= link_to recipe_step_path(step), method: :get do -%>
+    <div class="card">
+      <div class="">
+        <h2>Recipe_id</h2>
+        <p><%= step.recipe_id %></p>
+      </div>
 
-    <div class="">
-      <h2>Position</h2>
-      <p><%= step.position %></p>
-    </div>
+      <div class="">
+        <h2>Position</h2>
+        <p><%= step.position %></p>
+      </div>
 
-    <a><%= link_to 'Show', step %></a>
-    <a><%= link_to 'Edit', edit_step_path(step) %></a>
-    <a><%= link_to 'Destroy', step, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+      <a><%#= link_to 'Show', step %></a>
+      <a><%#= link_to 'Edit', edit_step_path(step) %></a>
+      <a><%#= link_to 'Destroy', step, method: :delete, data: { confirm: 'Are you sure?' } %></a>
   </div>
+    <% end %>
   <% end %>
 </section>
 
 <br>
 
-<%= link_to 'New Step', new_step_path %>
+<%#= link_to 'New Step', new_step_path %>

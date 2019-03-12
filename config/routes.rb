@@ -6,10 +6,8 @@ Rails.application.routes.draw do
   get 'users/:id' => 'users#show'
   # get '/:username', to: 'users#show', as: :username
 
-  resources :steps
   resources :dishes
   resources :ingredients
-  resources :recipe_ingredients
   resources :users
 
   resources :recipes do
@@ -17,6 +15,8 @@ Rails.application.routes.draw do
       post 'fork'
       get 'fork'
     end
+    resources :recipe_ingredients
+    resources :steps
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
