@@ -4,7 +4,6 @@
 
 <section>
   <% @steps.each do |step| %>
-    <%= link_to recipe_step_path(step), method: :get do -%>
     <div class="card">
       <div class="">
         <h2>Recipe_id</h2>
@@ -20,7 +19,6 @@
       <a><%#= link_to 'Edit', edit_step_path(step) %></a>
       <a><%#= link_to 'Destroy', step, method: :delete, data: { confirm: 'Are you sure?' } %></a>
   </div>
-    <% end %>
   <% end %>
 </section>
 
