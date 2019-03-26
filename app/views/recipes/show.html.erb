@@ -27,13 +27,13 @@
     <h3><%= @recipe.difficulty %></h3>
   </div>
 
-  <h2>Ингредиенты <span><%= image_tag('additem.svg') %> <%= link_to 'recipe_ingredients#new' %></span></h2>
+  <h2>Ингредиенты <span><%= image_tag('additem.svg') %> <%= link_to 'Добавить ингредиент', new_recipe_recipe_ingredient_path(@recipe) %></span></h2>
   <h3 class="portions">Порции <span><span></span><%= @recipe.portions %></span></h3>
   <section class="recipe_ingredients">
     <%= render partial: 'recipe_ingredients/recipe_ingredient', collection: @recipe.recipe_ingredients %>
   </section>
 
-  <h2>Инструкция приготовления <span><%= image_tag('additem.svg') %> <%= link_to 'steps#new' %></span></h2>
+  <h2>Инструкция приготовления <span><%= image_tag('additem.svg') %> <%= link_to 'Добавить шаг', new_recipe_step_path(@recipe) %></span></h2>
   <%= render partial: 'steps/step', collection: @recipe.steps %>
 
   <div class="links">

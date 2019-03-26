@@ -1,13 +1,17 @@
-class RegistrationsController < Devise::RegistrationsController
-  before_action :set_registration, only: [:sign_up_params, :account_update_params]
+class UsersController < ApplicationController
+  # before_action :set_user
+
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+  end
+
 
   private
 
-  def sign_up_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :avatar)
-  end
-
-  def account_update_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :avatar)
+  def set_user
+    @user = User.find_by_email(params[:email])
   end
 end

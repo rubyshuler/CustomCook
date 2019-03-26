@@ -10,59 +10,59 @@
       </ul>
     </div>
   <% end %>
+  <h1>New Recipe</h1>
 
   <div class="field">
-    <p>
+    <h2>
       <%= form.label :recipe_image %>
-      <%= form.file_field :recipe_image %>
-    </p>
+    </h2>
+    <%= form.file_field :recipe_image %>
   </div>
 
   <div class="field">
-    <p>
+    <h2>
       <%= form.label :title %>
-      <%= form.text_field :title %>
-    </p>
+    </h2>
+    <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <p>
+    <h2>
       <%= form.label :recipe_description %>
-      <%= form.text_field :recipe_description %>
-    </p>
+    </h2>
+    <%= form.text_field :recipe_description %>
   </div>
 
   <div class="field">
-    <p>
+    <h2>
       <%= form.label :portions %>
-      <%= form.number_field :portions %>
-    </p>
+    </h2>
+    <%= form.number_field :portions %>
   </div>
 
   <div class="field">
-    <p>
+    <h2>
       <%= form.label :time %>
-      <%= form.number_field :time %>
-    </p>
+    </h2>
+    <%= form.number_field :time %>
   </div>
 
   <div class="field">
-    <p>
+    <h2>
       <%= form.label :difficulty %>
-      <%= select("recipe", "difficulty", options_for_select([['Легко'], ['Не просто'], ['Сложно']]), {include_blank: 'Насколько сложно?'}) %>
-    </p>
+    </h2>
+    <%= select("recipe", "difficulty", options_for_select([['Легко'], ['Не просто'], ['Сложно']]), {include_blank: 'Насколько сложно?'}) %>
   </div>
 
   <div class="field">
-    <p>
+    <h2>
       <%= form.label :nutritions %>
-      <%= form.number_field :nutritions %>
-    </p>
+    </h2>
+    <%= form.number_field :nutritions %>
   </div>
 
 
   <div class="actions">
-    <%= form.label 'Добавить ингредиент' %>
-    <%= form.submit %>
+    <%= form.submit 'Добавить ингредиент', :class => 'submitButton' %>
   </div>
 <% end %>
