@@ -15,6 +15,7 @@ class DishesController < ApplicationController
   # GET /dishes/new
   def new
     @dish = Dish.new
+    @recipe = Recipe.find(params[:recipe_id])
   end
 
   # GET /dishes/1/edit
@@ -24,14 +25,13 @@ class DishesController < ApplicationController
   # POST /dishes
   # POST /dishes.json
   def create
+    @recipe = Recipe.find(params[:recipe_id])
     @dish = Dish.new(dish_params)
-
     @dish.user_id = current_user.id
-    # @dish.recipe_id = Recipe.find(params[:recipe_id])
 
     respond_to do |format|
       if @dish.save
-        format.html { redirect_to @dish, notice: 'Dish was successfully created.' }
+        format.html { redirect_to @recipe, :controller => 'recipes', :action => 'show', foo: dish_params }
         format.json { render :show, status: :created, location: @dish }
       else
         format.html { render :new }

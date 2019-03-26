@@ -2,34 +2,29 @@ class RecipeIngredientsController < ApplicationController
   load_and_authorize_resource
   before_action :set_recipe_ingredient, only: [:show, :edit, :update, :destroy]
 
-  # GET /recipe_ingredients
-  # GET /recipe_ingredients.json
   def index
     @recipe_ingredients = RecipeIngredient.all
   end
 
-  # GET /recipe_ingredients/1
-  # GET /recipe_ingredients/1.json
   def show
   end
 
-  # GET /recipe_ingredients/new
   def new
     @recipe_ingredient = RecipeIngredient.new
+    @recipe = Recipe.find(params[:recipe_id])
   end
 
-  # GET /recipe_ingredients/1/edit
   def edit
   end
 
-  # POST /recipe_ingredients
-  # POST /recipe_ingredients.json
   def create
-    @recipe_ingredient = RecipeIngredient.new(recipe_ingredient_params)
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_ingredient = @recipe.recipe_ingredients.new(recipe_ingredient_params)
+    @ingredient = Ingredient.find(params[:recipe_ingredient][:ingredient_id])
 
     respond_to do |format|
       if @recipe_ingredient.save
-        format.html { redirect_to @recipe_ingredient, notice: 'Recipe ingredient was successfully created.' }
+        format.html { redirect_to new_recipe_step_path(@recipe), :controller => 'steps', :action => 'create' }
         format.json { render :show, status: :created, location: @recipe_ingredient }
       else
         format.html { render :new }
@@ -38,8 +33,6 @@ class RecipeIngredientsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /recipe_ingredients/1
-  # PATCH/PUT /recipe_ingredients/1.json
   def update
     respond_to do |format|
       if @recipe_ingredient.update(recipe_ingredient_params)
@@ -52,8 +45,6 @@ class RecipeIngredientsController < ApplicationController
     end
   end
 
-  # DELETE /recipe_ingredients/1
-  # DELETE /recipe_ingredients/1.json
   def destroy
     @recipe_ingredient.destroy
     respond_to do |format|

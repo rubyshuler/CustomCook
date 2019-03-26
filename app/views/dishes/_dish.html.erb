@@ -1,6 +1,7 @@
-<%=
-  react_component 'Dish', {
-    dish_image_url: dish.dish_image_url.to_s,
-    review: dish.review
-  }
-%>
+<div class="cookedDish">
+  <h3><%#= dish.user.username %></h3>
+  <p>
+    <%= dish.review %>
+  </p>
+  <%= image_tag(dish.dish_image_url.to_s) %>
+</div>

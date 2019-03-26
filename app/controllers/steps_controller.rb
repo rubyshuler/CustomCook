@@ -2,36 +2,30 @@ class StepsController < ApplicationController
   load_and_authorize_resource
   before_action :set_step, only: [:show, :edit, :update, :destroy]
 
-  # GET /steps
-  # GET /steps.json
   def index
     @steps = Step.all
   end
 
-  # GET /steps/1
-  # GET /steps/1.json
   def show
   end
 
-  # GET /steps/new
   def new
     @step = Step.new
+    @recipe = Recipe.find(params[:recipe_id])
   end
 
-  # GET /steps/1/edit
   def edit
   end
 
-  # POST /steps
-  # POST /steps.json
   def create
-    @step = Step.new(step_params)
+    @recipe = Recipe.find(params[:recipe_id])
+    @step = @recipe.steps.new(step_params)
 
     respond_to do |format|
       if @step.save
-        # format.html { redirect_to @step, notice: 'Step was successfully created.' }
-        format.js
+        format.html { redirect_to @recipe, :controller => 'recipes', :action => 'show',foo: step_params}
         format.json { render :show, status: :created, location: @step }
+        # format.js
       else
         format.html { render :new }
         format.json { render json: @step.errors, status: :unprocessable_entity }
@@ -39,13 +33,10 @@ class StepsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /steps/1
-  # PATCH/PUT /steps/1.json
   def update
     respond_to do |format|
       if @step.update(step_params)
-        format.js
-        format.html { redirect_to @step, notice: 'Step was successfully updated.' }
+        format.html { redirect_to steps_url, notice: 'Step was successfully updated.' }
         format.json { render :show, status: :ok, location: @step }
       else
         format.html { render :edit }
@@ -54,8 +45,6 @@ class StepsController < ApplicationController
     end
   end
 
-  # DELETE /steps/1
-  # DELETE /steps/1.json
   def destroy
     @step.destroy
     respond_to do |format|
@@ -72,7 +61,6 @@ class StepsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def step_params
-      # params.require(:step).permit(:description, :recipe_id, :position, :step_image)
-      params.require(:step).permit(:description, :recipe_id, :position, :step_image)
+      params.require(:step).permit(:description, :position, :step_image, :recipe_id)
     end
 end

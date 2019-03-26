@@ -4,6 +4,10 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.file_field :avatar, multiple: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :user_name %><br />
     <%= f.text_field :username %>
   </div>

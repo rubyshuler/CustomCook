@@ -12,44 +12,57 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :recipe_image %>
-    <%= form.file_field :recipe_image %>
+    <p>
+      <%= form.label :recipe_image %>
+      <%= form.file_field :recipe_image %>
+    </p>
   </div>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <p>
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </p>
   </div>
 
   <div class="field">
-    <%= form.label :recipe_description %>
-    <%= form.text_field :recipe_description %>
+    <p>
+      <%= form.label :recipe_description %>
+      <%= form.text_field :recipe_description %>
+    </p>
   </div>
 
   <div class="field">
-    <%= form.label :portions %>
-    <%= form.number_field :portions %>
+    <p>
+      <%= form.label :portions %>
+      <%= form.number_field :portions %>
+    </p>
   </div>
 
   <div class="field">
-    <%= form.label :time %>
-    <%= form.number_field :time %>
+    <p>
+      <%= form.label :time %>
+      <%= form.number_field :time %>
+    </p>
   </div>
 
   <div class="field">
-    <%= form.label :difficulty %>
-    <%= form.number_field :difficulty %>
+    <p>
+      <%= form.label :difficulty %>
+      <%= select("recipe", "difficulty", options_for_select([['Легко'], ['Не просто'], ['Сложно']]), {include_blank: 'Насколько сложно?'}) %>
+    </p>
   </div>
 
   <div class="field">
-    <%= form.label :nutritions %>
-    <%= form.number_field :nutritions %>
+    <p>
+      <%= form.label :nutritions %>
+      <%= form.number_field :nutritions %>
+    </p>
   </div>
+
 
   <div class="actions">
+    <%= form.label 'Добавить ингредиент' %>
     <%= form.submit %>
   </div>
 <% end %>
-
-<%= link_to 'New Recipe Ingredient', new_recipe_ingredient_path %>
-<%= link_to 'New Step', new_step_path %>

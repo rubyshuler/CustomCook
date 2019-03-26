@@ -11,23 +11,12 @@
           <%= image_tag(recipe.recipe_image_url.to_s) %>
         </div>
 
-        <h2><%= recipe.title %></h2>
+        <h3><%= recipe.title %></h3>
 
         <div class="recipe_attr">
-          <p><%= recipe.nutritions %>ккал</p>
-          <p class="clock"><span><%= image_tag('clock.svg') %></span><%= recipe.time %>мин</p>
-          <p><%= recipe.difficulty %>уровень</p>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-
-  <% if can? :create, Recipe %>
-    <%= link_to new_recipe_path, {:action => 'create'} do %>
-      <div class="card add_recipe">
-        <div class="info">
-          <h2>Создать новый рецепт</h2>
-          <%= image_tag('add.svg') %>
+          <p><%= recipe.nutritions %> ккал</p>
+          <p><%= recipe.difficulty %></p>
+          <p class="clock"><span><%= image_tag('clock.svg') %></span><%= recipe.time %> мин</p>
         </div>
       </div>
     <% end %>

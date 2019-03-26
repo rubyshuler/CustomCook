@@ -1,54 +1,59 @@
 <p id="notice"><%= notice %></p>
 
-<%=
-  react_component 'Recipe', {
-    title: @recipe.title,
-    recipe_image_url: @recipe.recipe_image_url.to_s,
-    recipe_description: @recipe.recipe_description,
-    nutritions: @recipe.nutritions,
-    time: @recipe.time,
-    difficulty: @recipe.difficulty,
-    portions: @recipe.portions
-  }
-%>
 
 <div class="therecipe">
+  <h1><%= @recipe.title %></h1>
 
+  <div class="image">
+    <%= image_tag(@recipe.recipe_image_url.to_s) %>
+  </div>
+
+  <div class="author">
+    <h3><%= @recipe.user.username %></h3>
+    <button type="button" name="button">
+      <% if can? :update, Recipe %>
+        <%= link_to 'Редактировать рецепт', edit_recipe_path(@recipe) %>
+      <% end %>
+    </button>
+  </div>
+
+  <h3 class="recipe_description"><%= @recipe.recipe_description %></h3>
+
+  <h2>Общая информация</h2>
+
+  <div class="info">
+    <h3><%= @recipe.nutritions %>ккал</h3>
+    <h3><%= @recipe.time %>мин</h3>
+    <h3><%= @recipe.difficulty %></h3>
+  </div>
+
+  <h2>Ингредиенты <span><%= image_tag('additem.svg') %> <%= link_to 'recipe_ingredients#new' %></span></h2>
+  <h3 class="portions">Порции <span><span></span><%= @recipe.portions %></span></h3>
   <section class="recipe_ingredients">
     <%= render partial: 'recipe_ingredients/recipe_ingredient', collection: @recipe.recipe_ingredients %>
   </section>
 
-  <h2>Инструкция приготовления</h2>
+  <h2>Инструкция приготовления <span><%= image_tag('additem.svg') %> <%= link_to 'steps#new' %></span></h2>
   <%= render partial: 'steps/step', collection: @recipe.steps %>
-  <%= render partial: 'steps/newStep' %>
 
   <div class="links">
-    <a>
-      <% if can? :destroy, Recipe %>
-        <%= link_to 'Destroy', @recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
-    </a>
 
-    <a>
-      <% if can? :update, Recipe %>
-        <%= link_to 'Edit', edit_recipe_path(@recipe) %>
-      <% end %>
-    </a>
-
-    <a>
-      <% if can? :fork, Recipe %>
-        <%= link_to 'Fork', fork_recipe_path(@recipe) %>
-      <% end %>
-    </a>
   </div>
+
+  <section class="reviews">
+    <div class="cooking">
+      <div class="forked">
+        <%= image_tag('fork.svg') %>
+        <%= link_to 'Изменить рецепт', fork_recipe_path(@recipe) %>
+      </div>
+
+      <div class="cooked">
+        <%= image_tag('cooked.svg') %>
+        <%= link_to 'Уже готово!', new_recipe_dish_path(@recipe) %>
+      </div>
+    </div>
+
+    <h2>История рецепта</h2>
+    <%= render partial: 'dishes/dish', collection: @recipe.dishes %>
+  </section>
 </div>
-
-<h3>Приготовлено</h3>
-
-<%= render partial: 'dishes/dish', collection: @recipe.dishes %>
-<h3><%= link_to 'Cooked it', new_dish_path %></h3>
-
-
-<%#= link_to 'Edit', edit_recipe_path(@recipe) %>
-<%#= link_to 'Fork', fork_recipe_path(@recipe) %>
-<%#= link_to 'Back', recipes_path %>

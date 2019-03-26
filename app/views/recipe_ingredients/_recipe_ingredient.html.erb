@@ -1,7 +1,4 @@
-<%=
-  react_component 'RecipeIngredient', {
-    quantity: recipe_ingredient.quantity,
-    measure: recipe_ingredient.measure,
-    ingredient_id: Ingredient.find(recipe_ingredient.ingredient_id).name
-  }
-%>
+<div class="ingredients">
+  <h3><%= recipe_ingredient.quantity %> <%= recipe_ingredient.measure %></h3>
+  <h3><%= recipe_ingredient.ingredient.name if recipe_ingredient.ingredient %></h3>
+</div>

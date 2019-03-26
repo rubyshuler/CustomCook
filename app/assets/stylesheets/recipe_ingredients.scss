@@ -2,6 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.portions {
+  display: flex;
+  align-content: center;
+  width: 168px;
+  background-color: #17E0B1;
+  color: white;
+  border-radius: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 16px;
+
+  span {
+    margin-left: 28px;
+    line-height: 20px;
+    span{
+      display: inline-block;
+      margin-right: 13px;
+      width: 1px;
+      height: 12px;
+      background-color: white;
+    }
+  }
+}
+
 .recipe_ingredients {
   display: flex;
   width: 768px;
@@ -14,9 +38,9 @@
     flex-direction: row;
     flex-wrap: wrap;
 
-    p:first-child {
+    h3:first-child {
       margin-right: 16px;
-      width: 100px;
+      width: 96px;
     }
   }
 }

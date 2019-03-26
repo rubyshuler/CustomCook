@@ -1,3 +1,34 @@
 // Place all the styles related to the Dishes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  width: 768px;
+
+  h2 {
+
+  }
+
+  .cookedDish{
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+
+    p {
+      width: 242px;
+      margin-right: 16px;
+      margin-top: 16px;
+    }
+
+    img {
+      object-fit: none;
+      object-position: center;
+      width: auto;
+      max-width: 342px;
+      height: 195px;
+      border-radius: 6px;
+    }
+  }
+}

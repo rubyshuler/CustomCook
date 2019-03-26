@@ -8,7 +8,5 @@ class Recipe < ApplicationRecord
   has_many :dishes, dependent: :destroy
   belongs_to :user, optional: true
 
-  accepts_nested_attributes_for :steps
-  accepts_nested_attributes_for :recipe_ingredients
-
+  accepts_nested_attributes_for :steps, :recipe_ingredients
 end

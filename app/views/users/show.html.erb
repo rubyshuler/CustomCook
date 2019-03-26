@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <section class="profile">
-  <div class="avatar"></div>
+  <div class="avatar">
+    <%= image_tag(@user.avatar_url.to_s) %>
+  </div>
 
   <div class="info">
     <div class="">
@@ -24,6 +26,17 @@
 </section>
 
 <section>
+  <% if can? :create, Recipe %>
+    <%= link_to new_recipe_path, {:action => 'create'} do %>
+    <div class="card add_recipe">
+      <div class="info">
+        <h3>Создать новый рецепт</h3>
+        <%= image_tag('add.svg') %>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+
   <% @user.recipes.each do |recipe| %>
   <%= link_to recipe, {:action => 'show', :id => recipe.id} do -%>
     <div class="card">
@@ -33,27 +46,17 @@
           <%= image_tag(recipe.recipe_image_url.to_s) %>
         </div>
 
-        <h2><%= recipe.title %></h2>
+        <h3><%= recipe.title %></h3>
 
         <div class="recipe_attr">
           <p><%= recipe.nutritions %>ккал</p>
+          <p><%= recipe.difficulty %></p>
           <p class="clock"><span><%= image_tag('clock.svg') %></span><%= recipe.time %>мин</p>
-          <p><%= recipe.difficulty %>уровень</p>
         </div>
       </div>
     <% end %>
   <% end %>
 
-  <% if can? :create, Recipe %>
-    <%= link_to new_recipe_path, {:action => 'create'} do %>
-      <div class="card add_recipe">
-        <div class="info">
-          <h2>Создать новый рецепт</h2>
-          <%= image_tag('add.svg') %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
 </section>
 
 <footer></footer>
