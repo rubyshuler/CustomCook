@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'hello_world', to: 'hello_world#index'
+  root 'recipes#index'
 
   # devise_for :users, :path_prefix => 'd'
   devise_for :users
@@ -20,6 +20,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'recipes#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
