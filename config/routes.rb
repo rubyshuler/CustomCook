@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
-  root 'recipes#index'
-  get 'hello_world', to: 'hello_world#index'
+  resources :categories
+  root to: 'pages#home'
 
-  # devise_for :users, :path_prefix => 'd'
   devise_for :users
   get 'users/:id' => 'users#show'
-  # get '/:username', to: 'users#show', as: :username
 
   resources :ingredients
   resources :users
 
   resources :recipes do
+    resources :recipe_attachments
     resources :steps
     resources :recipe_ingredients
     resources :dishes

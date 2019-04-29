@@ -40,3 +40,92 @@ end
   u = create_user(user)
   puts "User with email #{u.email} created"
 end
+
+@ingredients = [
+  {
+    name: "Оливковое масло",
+    nutritions: "884"
+  },
+  {
+    name: "Лук",
+    nutritions: "40"
+  },
+  {
+    name: "Тыква",
+    nutritions: "26"
+  },
+  {
+    name: "Морковь",
+    nutritions: "41"
+  },
+  {
+    name: "Чеснок",
+    nutritions: "149"
+  },
+  {
+    name: "Имбирь",
+    nutritions: "80"
+  },
+  {
+    name: "Пармезан",
+    nutritions: "431"
+  },
+  {
+    name: "Чили",
+    nutritions: "40"
+  },
+  {
+    name: "Кориандр",
+    nutritions: "23"
+  },
+  {
+    name: "Мука",
+    nutritions: "364"
+  },
+  {
+    name: "Тмин",
+    nutritions: "333"
+  },
+  {
+    name: "Лайм",
+    nutritions: "30"
+  },
+  {
+    name: "Йогурт",
+    nutritions: "59"
+  },
+  {
+    name: "Латук",
+    nutritions: "15"
+  },
+  {
+    name: "Чили",
+    nutritions: "40"
+  },
+  {
+    name: "Булочки для бургеров",
+    nutritions: "272"
+  },
+  {
+    name: "Пападам",
+    nutritions: "371"
+  },
+  {
+    name: "Манговый чатни",
+    nutritions: "140"
+  }
+]
+
+# https://www.jamieoliver.com/recipes/vegetable-recipes/brick-lane-burger/
+
+def create_ingredient(create_ingredient)
+  Ingredient.create!(
+    username:   ingredient[:name],
+    nutritions: ingredient[:nutritions]
+  )
+end
+
+@ingredients.each do |ingredient|
+  i = create_ingredient(create_ingredient)
+  puts "Ingredient #{i.name} created"
+end

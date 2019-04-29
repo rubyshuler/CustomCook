@@ -10,8 +10,8 @@ class StepsController < ApplicationController
   end
 
   def new
-    @step = Step.new
     @recipe = Recipe.find(params[:recipe_id])
+    @step = Step.new
   end
 
   def edit

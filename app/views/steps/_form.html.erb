@@ -11,7 +11,7 @@
     </div>
   <% end %>
   <h1>New Step</h1>
-  
+
   <div class="field">
     <h2>
       <%= form.label :recipe_id %>
@@ -21,21 +21,21 @@
 
   <div class="field">
     <h2>
-      <%= form.label :step_image %>
+      <%= form.label "Фотография шага" %>
     </h2>
     <%= form.file_field :step_image %>
   </div>
 
   <div class="field">
     <h2>
-      <%= form.label :description %>
+      <%= form.label "Описание шага" %>
     </h2>
     <%= form.text_field :description %>
   </div>
 
   <div class="field">
     <h2>
-      <%= form.label :position %>
+      <%= form.label "Номер шага" %>
     </h2>
     <%= form.number_field :position %>
   </div>

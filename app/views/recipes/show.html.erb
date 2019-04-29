@@ -2,10 +2,11 @@
 
 
 <div class="therecipe">
+
   <h1><%= @recipe.title %></h1>
 
   <div class="image">
-    <%= image_tag(@recipe.recipe_image_url.to_s) %>
+    <%= render partial: 'recipe_attachments/recipe_attachments', collection: @recipe.recipe_attachments %>
   </div>
 
   <div class="author">
@@ -20,6 +21,7 @@
   <h3 class="recipe_description"><%= @recipe.recipe_description %></h3>
 
   <h2>Общая информация</h2>
+  <h2><%= link_to Category.find(@recipe.category_id).category_name, category_path(@recipe.category_id) %></h2>
 
   <div class="info">
     <h3><%= @recipe.nutritions %>ккал</h3>
@@ -29,8 +31,8 @@
 
   <h2>Ингредиенты <span><%= image_tag('additem.svg') %> <%= link_to 'Добавить ингредиент', new_recipe_recipe_ingredient_path(@recipe) %></span></h2>
   <h3 class="portions">Порции <span><span></span><%= @recipe.portions %></span></h3>
-  <section class="recipe_ingredients">
-    <%= render partial: 'recipe_ingredients/recipe_ingredient', collection: @recipe.recipe_ingredients %>
+
+  <section class="recipe_ingredients" id="recipe_ingredients" data-props="<%= @ingredients %>">
   </section>
 
   <h2>Инструкция приготовления <span><%= image_tag('additem.svg') %> <%= link_to 'Добавить шаг', new_recipe_step_path(@recipe) %></span></h2>

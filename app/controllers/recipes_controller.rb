@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  layout :resolve_layout
   load_and_authorize_resource
   before_action :set_recipe, only: [:show, :edit, :update, :destroy, :fork]
 
@@ -12,13 +13,19 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe_ingredient = RecipeIngredient.new
     @step = Step.new
+    @recipe_attachments = @recipe.recipe_attachments.all
+
+    @ingredients = RecipeIngredient.all.as_json(only: [:quantity, :measure], include: { ingredient: { only: :name } }).to_json
   end
 
   def new
     @recipe = Recipe.new
+    @categories = Category.all.map{|category| [category.category_name, category.id] }
+    @recipe_attachment = @recipe.recipe_attachments.build
   end
 
   def edit
+    @categories = Category.all.map{|c| [ c.category_name, c.id ] }
   end
 
   def fork
@@ -39,11 +46,12 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
+    @recipe.category_id = params[:category_id]
 
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to new_recipe_recipe_ingredient_path(@recipe), :controller => 'recipe_ingredients', :action => 'create', notice: 'Recipe was successfully created.' }
-        # format.json { render 'steps/form', status: :created, location: @recipe }
+        format.json { render 'steps/form', status: :created, location: @recipe }
       else
         format.html { render :new }
         format.json { render json: @recipe.errors, status: :unprocessable_entity }
@@ -52,6 +60,9 @@ class RecipesController < ApplicationController
   end
 
   def update
+    @recipe.category_id = params[:category_id]
+    @recipe.recipe_attachments(params) if params[:recipe_attachments]
+
     respond_to do |format|
       if @recipe.update(recipe_params)
         format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
@@ -80,6 +91,18 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:recipe_id, :title, :recipe_description, :portions, :time, :difficulty, :nutritions, :recipe_image, steps_attributes: [:recipe_id, :description, :position, :step_image], recipe_ingredients_attributes: [:recipe_id, :ingredient_id, :quantity, :measure])
+        params.require(:recipe).permit(:recipe_id, :title, :recipe_description, :portions, :time, :difficulty, :nutritions, :category_id, post_attachments_attributes: [:id, :post_id, :avatar], steps_attributes: [:recipe_id, :description, :position, :step_image], recipe_ingredients_attributes: [:recipe_id, :ingredient_id, :quantity, :measure])
+    end
+
+
+    def resolve_layout
+      case action_name
+      when "new", "create"
+        "recipes_form"
+      when "index"
+        "recipes"
+      else
+        "application"
+      end
     end
 end

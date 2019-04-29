@@ -1,4 +1,4 @@
-<%= form_with(model: recipe, local: true) do |form| %>
+<%= form_with(model: recipe, local: true, :html => { :multipart => true }) do |form| %>
   <% if recipe.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
@@ -14,49 +14,61 @@
 
   <div class="field">
     <h2>
-      <%= form.label :recipe_image %>
+      <%= form.label "Категория блюда" %>
     </h2>
-    <%= form.file_field :recipe_image %>
+    <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Категория блюда") %>
+  </div>
+
+
+  <div class="field">
+    <%= form.fields_for :recipe_attachments do |r| %>
+      <h2>
+        <%= r.label "Фотография рецепта" %>
+      </h2>
+      <div class="recipe_images">
+        <%= r.file_field :recipe_image, :multiple => true, name: "recipe_attachments[recipe_images][]" %>
+      </div>
+    <% end %>
   </div>
 
   <div class="field">
     <h2>
-      <%= form.label :title %>
+      <%= form.label "Название" %>
     </h2>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
     <h2>
-      <%= form.label :recipe_description %>
+      <%= form.label "Описание" %>
     </h2>
     <%= form.text_field :recipe_description %>
   </div>
 
   <div class="field">
     <h2>
-      <%= form.label :portions %>
+      <%= form.label "Количество порций" %>
     </h2>
     <%= form.number_field :portions %>
   </div>
 
   <div class="field">
     <h2>
-      <%= form.label :time %>
+      <%= form.label "Время" %>
     </h2>
     <%= form.number_field :time %>
   </div>
 
   <div class="field">
     <h2>
-      <%= form.label :difficulty %>
+      <%= form.label "Сложность" %>
     </h2>
     <%= select("recipe", "difficulty", options_for_select([['Легко'], ['Не просто'], ['Сложно']]), {include_blank: 'Насколько сложно?'}) %>
   </div>
 
   <div class="field">
     <h2>
-      <%= form.label :nutritions %>
+      <%= form.label "Калорийность" %>
     </h2>
     <%= form.number_field :nutritions %>
   </div>
