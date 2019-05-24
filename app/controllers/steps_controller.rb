@@ -19,11 +19,12 @@ class StepsController < ApplicationController
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
+    @step.recipe_id = @recipe.id
     @step = @recipe.steps.new(step_params)
 
     respond_to do |format|
       if @step.save
-        format.html { redirect_to @recipe, :controller => 'recipes', :action => 'show',foo: step_params}
+        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.'}
         format.json { render :show, status: :created, location: @step }
         # format.js
       else

@@ -1,0 +1,19 @@
+<section>
+  <%= link_to recipe, {:action => 'show', :id => recipe.id} do -%>
+    <div class="card">
+
+
+        <div class="image">
+          <%= image_tag(recipe.recipe_image_url.to_s) %>
+        </div>
+
+        <h3><%= recipe.title %></h3>
+
+        <div class="recipe_attr">
+          <p><%= recipe.nutritions %> ккал</p>
+          <p><%= recipe.difficulty %></p>
+          <p class="clock"><span><%= image_tag('clock.svg') %></span><%= recipe.time %> мин</p>
+        </div>
+    </div>
+  <% end %>
+</section>

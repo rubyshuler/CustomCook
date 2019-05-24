@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EDA-Da</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'recipeFullForm_pack' %>
+  </head>
+
+  <body>
+    <nav>
+      <div class="logo">
+        <%= link_to root_path do %>
+        <%= image_tag('logo.svg') %>
+        <% end %>
+      </div>
+
+
+      <div class="avatar">
+
+        <% if can? :create, Recipe %>
+        <div class="newitemslink">
+          <span><%= image_tag('additem.svg') %> <%= link_to 'Новый рецепт', new_recipe_path, action: :create %></span>
+        </div>
+        <% end %>
+
+        <div class="loginNav">
+          <% if user_signed_in? %>
+          <%= link_to current_user.username, current_user%>
+          <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
+          <% else %>
+          <%= link_to 'Register', new_user_registration_path   %>
+          <%= link_to 'Login', new_user_session_path  %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+    <hr>
+
+    <p class="notice"><%= notice %></p>
+    <%= yield %>
+  </body>
+</html>

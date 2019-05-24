@@ -2,7 +2,7 @@
 
 <section class="profile">
   <div class="avatar">
-    <%= image_tag(@user.avatar_url.to_s) %>
+    <%#= image_tag(@user.avatar_url.to_s) %>
   </div>
 
   <div class="info">
@@ -16,10 +16,8 @@
       </span>
     </div>
 
-    <div class="">
-      <h3>Подписчики</h3>
-      <h3>Подписки</h3>
-    </div>
+    <%= render 'stats' %>
+    <%= render 'follow_form' %>
 
   </div>
 
@@ -43,7 +41,7 @@
 
 
         <div class="image">
-          <%= image_tag(recipe.recipe_image_url.to_s) %>
+          <%#= image_tag(recipe.recipe_image_url.to_s) %>
         </div>
 
         <h3><%= recipe.title %></h3>

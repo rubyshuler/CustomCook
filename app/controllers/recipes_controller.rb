@@ -14,14 +14,17 @@ class RecipesController < ApplicationController
     @recipe_ingredient = RecipeIngredient.new
     @step = Step.new
     @recipe_attachments = @recipe.recipe_attachments.all
-
     @ingredients = RecipeIngredient.all.as_json(only: [:quantity, :measure], include: { ingredient: { only: :name } }).to_json
   end
 
   def new
     @recipe = Recipe.new
-    @categories = Category.all.map{|category| [category.category_name, category.id] }
     @recipe_attachment = @recipe.recipe_attachments.build
+
+    @categories = Category.all.map{|c| [ c.category_name, c.id ] }
+    @recipe_ingredients = RecipeIngredient.new
+    @ingredient = Ingredient.all.map{|i| [ i.name, i.id ] }
+    @steps = Step.new
   end
 
   def edit
@@ -50,8 +53,8 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to new_recipe_recipe_ingredient_path(@recipe), :controller => 'recipe_ingredients', :action => 'create', notice: 'Recipe was successfully created.' }
-        format.json { render 'steps/form', status: :created, location: @recipe }
+        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
+        format.json { render :show, status: :created, location: @recipe }
       else
         format.html { render :new }
         format.json { render json: @recipe.errors, status: :unprocessable_entity }
@@ -85,7 +88,6 @@ class RecipesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
-      # @recipe = Recipe.find(params[:id])
       @recipe = Recipe.find(params[:id])
     end
 

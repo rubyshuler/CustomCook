@@ -1,0 +1,26 @@
+<%
+  recipe_data = {
+    url: "",
+    recipe: {
+      category: @categories,
+      title: @recipe.title == nil ? "" : @recipe.title,
+      recipe_description: @recipe.recipe_description == nil ? "" : @recipe.recipe_description,
+      nutritions: @recipe.nutritions == nil ? "" : @recipe.nutritions,
+      time: @recipe.time == nil ? "" : @recipe.time,
+      difficulty: @recipe.difficulty == nil ? "" : @recipe.difficulty,
+      portions: @recipe.portions == nil ? "" : @recipe.portions
+    },
+    recipe_ingredient: [{
+      quantity: @recipe_ingredients.quantity == nil ? "" : @recipe_ingredients.quantity,
+      measure: @recipe_ingredients.measure == nil ? "" : @recipe_ingredients.measure,
+      ingredient: @ingredient
+    }],
+    step: [{
+      position: @steps.position == nil ? "" : @steps.position,
+      description: @steps.description == nil ? "" : @steps.description
+    }]
+  }
+%>
+
+<section class="recipeForm" id="recipeForm" data-props="<%= recipe_data.to_json %>">
+</section>

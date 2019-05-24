@@ -4,9 +4,15 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'users/:id' => 'users#show'
+  resources :relationships,       only: [:create, :destroy]
 
   resources :ingredients
-  resources :users
+
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
   resources :recipes do
     resources :recipe_attachments

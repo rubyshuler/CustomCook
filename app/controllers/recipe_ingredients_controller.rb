@@ -21,10 +21,11 @@ class RecipeIngredientsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_ingredient = @recipe.recipe_ingredients.new(recipe_ingredient_params)
     @ingredient = Ingredient.find(params[:recipe_ingredient][:ingredient_id])
+    @recipe_ingredient.recipe_id = @recipe.id
 
     respond_to do |format|
       if @recipe_ingredient.save
-        format.html { redirect_to new_recipe_step_path(@recipe), :controller => 'steps', :action => 'create' }
+        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
         format.json { render :show, status: :created, location: @recipe_ingredient }
       else
         format.html { render :new }
