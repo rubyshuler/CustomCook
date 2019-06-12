@@ -28,5 +28,8 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find_by_email(params[:email])
   end
-
+  # 
+  # def user_params
+  #   params.require(:user).permit(:email, :first_name, :last_name, {avatars: []})
+  # end
 end

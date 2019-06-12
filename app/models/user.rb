@@ -35,6 +35,9 @@ class User < ApplicationRecord
   has_many :recipes
   has_many :dishes
 
+  has_many :favorites
+  has_many :favorite_projects, through: :favorites, source: :favorited, source_type: 'Project'
+
   mount_uploader :avatar, AvatarUploader
   # def to_param
   #   username

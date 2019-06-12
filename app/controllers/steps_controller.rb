@@ -24,10 +24,11 @@ class StepsController < ApplicationController
 
     respond_to do |format|
       if @step.save
+        format.js
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created.'}
         format.json { render :show, status: :created, location: @step }
-        # format.js
       else
+        format.js
         format.html { render :new }
         format.json { render json: @step.errors, status: :unprocessable_entity }
       end

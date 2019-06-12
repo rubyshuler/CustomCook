@@ -21,14 +21,29 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     @recipe_attachment = @recipe.recipe_attachments.build
 
-    @categories = Category.all.map{|c| [ c.category_name, c.id ] }
     @recipe_ingredients = RecipeIngredient.new
-    @ingredient = Ingredient.all.map{|i| [ i.name, i.id ] }
     @steps = Step.new
+
+    @ingredient = Ingredient.all.as_json(only: [:name, :id])
+    @categories = Category.all.as_json(only: [:category_name, :id])
   end
 
-  def edit
-    @categories = Category.all.map{|c| [ c.category_name, c.id ] }
+
+  def create
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user_id = current_user.id
+
+    respond_to do |format|
+      if @recipe.save
+        format.js
+        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
+        format.json { render :show, status: :created, location: @recipe }
+      else
+        format.js
+        format.html { render :new }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def fork
@@ -46,20 +61,8 @@ class RecipesController < ApplicationController
     end
   end
 
-  def create
-    @recipe = Recipe.new(recipe_params)
-    @recipe.user_id = current_user.id
-    @recipe.category_id = params[:category_id]
-
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
-        format.json { render :show, status: :created, location: @recipe }
-      else
-        format.html { render :new }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
-    end
+  def edit
+    @categories = Category.all.map{|c| [ c.category_name, c.id ] }
   end
 
   def update
@@ -93,7 +96,7 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-        params.require(:recipe).permit(:recipe_id, :title, :recipe_description, :portions, :time, :difficulty, :nutritions, :category_id, post_attachments_attributes: [:id, :post_id, :avatar], steps_attributes: [:recipe_id, :description, :position, :step_image], recipe_ingredients_attributes: [:recipe_id, :ingredient_id, :quantity, :measure])
+        params.require(:recipe).permit(:recipe_id, :title, :recipe_description, :portions, :time, :difficulty, :nutritions, :categories, :current_category, :category_id, steps_attributes: [:recipe_id, :description, :position, :step_image], recipe_ingredients_attributes: [:recipe_id, :ingredient_id, :quantity, :measure])
     end
 
 

@@ -6,13 +6,14 @@ class RecipeForm extends React.Component {
   constructor(props) {
     super(props)
 
-    this.handleCategoryChange = this.handleCategoryChange.bind(this)
-    this.handleTitleChange = this.handleTitleChange.bind(this)
+    this.handleCategoryChange          = this.handleCategoryChange.bind(this)
+    this.handleTitleChange             = this.handleTitleChange.bind(this)
     this.handleRecipeDescriptionChange = this.handleRecipeDescriptionChange.bind(this)
-    this.handleNutritionsChange = this.handleNutritionsChange.bind(this)
-    this.handleTimeChange = this.handleTimeChange.bind(this)
-    this.handleDifficultyChange = this.handleDifficultyChange.bind(this)
-    this.handlePortionsChange = this.handlePortionsChange.bind(this)
+    this.handleNutritionsChange        = this.handleNutritionsChange.bind(this)
+    this.handleTimeChange              = this.handleTimeChange.bind(this)
+    this.handleDifficultyChange        = this.handleDifficultyChange.bind(this)
+    this.handlePortionsChange          = this.handlePortionsChange.bind(this)
+    this.renderCategoriesOptions       = this.renderCategoriesOptions.bind(this)
   }
 
   componentDidMount() {
@@ -49,6 +50,20 @@ class RecipeForm extends React.Component {
     this.props.handlePortionsChange(e.target.value)
   }
 
+  renderCategoriesOptions() {
+    const { categories } = this.props.recipe
+    console.log( 'CATEGORIES', categories );
+    let categoriesOptions = []
+
+    categories.map((category, i) => (
+      categoriesOptions.push(
+        <option key={ i } value={ category.id }>{category.category_name}</option>
+      )
+    ))
+
+    return categoriesOptions
+  }
+
   render () {
     return (
       <div className="form">
@@ -57,10 +72,7 @@ class RecipeForm extends React.Component {
         <div className="field">
           <h2>
             <select name="category" onChange={ this.handleCategoryChange }>
-              {this.props.recipe.category.map((category, index) => (
-                <option key={index} value={category.id}>{this.props.recipe.category[index]}</option>
-                // в велью забирать айди категории
-              ))}
+              {this.renderCategoriesOptions()}
             </select>
           </h2>
         </div>

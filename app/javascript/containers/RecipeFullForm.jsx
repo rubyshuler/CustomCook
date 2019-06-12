@@ -29,7 +29,8 @@ export default class RecipeFullForm extends React.Component {
 
     this.state = {
       recipe: {
-        category: props.recipe.category,
+        categories: props.recipe.categories,
+        current_category: '',
         title: props.recipe.title,
         recipe_description: props.recipe.recipe_description,
         nutritions: props.recipe.nutritions,
@@ -37,142 +38,167 @@ export default class RecipeFullForm extends React.Component {
         difficulty: props.recipe.difficulty,
         portions: props.recipe.portions,
       },
-      recipe_ingredient: [{
-        ingredient: props.recipe_ingredient.ingredient,
+      recipe_ingredient: {
+        ingredients: props.recipe_ingredient.ingredients,
+        current_ingredient: '',
         quantity: props.recipe_ingredient.quantity,
         measure: props.recipe_ingredient.measure
-      }],
-      step: [{
+      },
+      step: {
         position: props.step.position,
         description: props.step.description
-      }]
+      }
     }
   }
 
   handleSubmit(e) {
-    e.preventDefault()
-
     $.ajax({
+      url: '/recipes',
+      dataType: 'JSON',
+      type: 'POST',
+      method: 'POST',
       data: {
         recipe: {
-          category: this.props.category,
-          title: this.props.title,
-          recipe_description: this.props.recipedescription,
-          portions: this.props.portions,
-          time: this.props.time,
-          difficulty: this.props.difficulty,
-          nutritions: this.props.nutritions,
+          category_id: this.state.recipe.current_category,
+          title: this.state.recipe.title,
+          recipe_description: this.state.recipe.recipe_description,
+          nutritions: this.state.recipe.nutritions,
+          time: this.state.recipe.time,
+          difficulty: this.state.recipe.difficulty,
+          portions: this.state.recipe.portions,
         },
         recipe_ingredient: {
-          ingredient: this.props.ingredient,
-          quantity: this.props.quantity,
-          measure: this.props.measure
+          ingredient_id: this.state.recipe_ingredient.current_ingredient,
+          quantity: this.state.recipe_ingredient.quantity,
+          measure: this.state.recipe_ingredient.measure
         },
         step: {
-          description: this.props.description,
-          position: this.props.position
+          position: this.state.step.position,
+          description: this.state.step.description
         }
       },
-      dataType: "json",
-      type: "POST",
-      url: "recipes/"
+      success: response => {
+        console.log('recipe created: ', response);
+      }
+    })
+    .done(function (data) {
+      console.log("success", data, data.url);
+      window.location.replace(data.url)
+    })
+    .fail(function () {
+      console.log("error");
+    })
+    .always(function () {
+      console.log("complete");
     })
 
   }
 
   handleCategoryChange(category) {
-    this.setState({
-      recipe: {
-        category: category
-      }
-    })
-  }
+    let newState = this.state
+    newState.recipe.current_category = category
 
-  handleTitleChange(title) {
     this.setState({
-      recipe: {
-        title: title
-      }
-    })
-  }
-
-  handleRecipeDescriptionChange(recipe_description) {
-    this.setState({
-      recipe: {
-        recipe_description: recipe_description
-      }
-    })
-  }
-
-  handleNutritionsChange(nutritions) {
-    this.setState({
-      recipe: {
-        nutritions: nutritions
-      }
-    })
-  }
-
-  handleTimeChange(time) {
-    this.setState({
-      recipe: {
-        time: time
-      }
-    })
-  }
-
-  handleDifficultyChange(difficulty) {
-    this.setState({
-      recipe: {
-        difficulty: difficulty
-      }
-    })
-  }
-
-  handlePortionsChange(portions) {
-    this.setState({
-      recipe: {
-        portions: portions
-      }
+      newState
     })
   }
 
   handleIngredientChange(ingredient) {
+    let newState = this.state
+    newState.recipe_ingredient.current_ingredient = ingredient
+
     this.setState({
-      recipe_ingredient: {
-        ingredient: ingredient
-      }
+      newState
+    })
+  }
+
+  handleTitleChange(title) {
+    let newState = this.state
+    newState.recipe.title = title
+
+    this.setState({
+      newState
+    })
+  }
+
+  handleRecipeDescriptionChange(recipe_description) {
+    let newState = this.state
+    newState.recipe.recipe_description = recipe_description
+
+    this.setState({
+      newState
+    })
+  }
+
+  handleNutritionsChange(nutritions) {
+    let newState = this.state
+    newState.recipe.nutritions = nutritions
+
+    this.setState({
+      newState
+    })
+  }
+
+  handleTimeChange(time) {
+    let newState = this.state
+    newState.recipe.time = time
+
+    this.setState({
+      newState
+    })
+  }
+
+  handleDifficultyChange(difficulty) {
+    let newState = this.state
+    newState.recipe.difficulty = difficulty
+
+    this.setState({
+      newState
+    })
+  }
+
+  handlePortionsChange(portions) {
+    let newState = this.state
+    newState.recipe.portions = portions
+
+    this.setState({
+      newState
     })
   }
 
   handleQuantityChange(quantity) {
+    let newState = this.state
+    newState.recipe_ingredient.quantity = quantity
+
     this.setState({
-      recipe_ingredient: {
-        quantity: quantity
-      }
+      newState
     })
   }
 
   handleMeasureChange(measure) {
+    let newState = this.state
+    newState.recipe_ingredient.measure = measure
+
     this.setState({
-      recipe_ingredient: {
-        measure: measure
-      }
+      newState
     })
   }
 
   handlePositionChange(position) {
+    let newState = this.state
+    newState.step.position = position
+
     this.setState({
-      step: {
-        position: position
-      }
+      newState
     })
   }
 
   handleDescriptionChange(description) {
+    let newState = this.state
+    newState.step.description = description
+
     this.setState({
-      step: {
-        description: description
-      }
+      newState
     })
   }
 
@@ -204,7 +230,7 @@ export default class RecipeFullForm extends React.Component {
         />
 
         <input
-          onSubmit={this.handleSubmit}
+          onClick={this.handleSubmit}
           type="submit"
           value="Submit"
         />

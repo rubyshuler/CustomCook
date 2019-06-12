@@ -25,9 +25,11 @@ class RecipeIngredientsController < ApplicationController
 
     respond_to do |format|
       if @recipe_ingredient.save
+        format.js
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
         format.json { render :show, status: :created, location: @recipe_ingredient }
       else
+        format.js
         format.html { render :new }
         format.json { render json: @recipe_ingredient.errors, status: :unprocessable_entity }
       end
