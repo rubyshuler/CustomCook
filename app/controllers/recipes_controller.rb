@@ -19,13 +19,14 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe_attachment = @recipe.recipe_attachments.build
+    # @recipe_attachment = @recipe.recipe_attachments.build
 
+    @recipe_attachment = RecipeAttachment.new
     @recipe_ingredients = RecipeIngredient.new
     @steps = Step.new
 
-    @ingredient = Ingredient.all.as_json(only: [:name, :id])
-    @categories = Category.all.as_json(only: [:category_name, :id])
+    @ingredient  = Ingredient.all.as_json(only: [:name, :id])
+    @categories  = Category.all.as_json(only: [:category_name, :id])
   end
 
 
@@ -96,7 +97,7 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-        params.require(:recipe).permit(:recipe_id, :title, :recipe_description, :portions, :time, :difficulty, :nutritions, :categories, :current_category, :category_id, steps_attributes: [:recipe_id, :description, :position, :step_image], recipe_ingredients_attributes: [:recipe_id, :ingredient_id, :quantity, :measure])
+        params.require(:recipe).permit(:recipe_id, :title, :recipe_description, :portions, :time, :difficulty, :nutritions, :categories, :current_category, :category_id, steps_attributes: [:recipe_id, :description, :position, :step_image], recipe_ingredients_attributes: [:recipe_id, :ingredient_id, :quantity, :measure], recipe_attachments_attributes: [:recipe_id, :recipe_image])
     end
 
 

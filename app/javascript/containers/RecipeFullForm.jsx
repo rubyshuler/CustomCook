@@ -10,22 +10,23 @@ import StepForm from '../components/StepForm'
 export default class RecipeFullForm extends React.Component {
   constructor(props) {
     super(props)
-    this.handleCategoryChange = this.handleCategoryChange.bind(this)
-    this.handleTitleChange = this.handleTitleChange.bind(this)
+    this.handleCategoryChange          = this.handleCategoryChange.bind(this)
+    this.handleRecipeImageChange       = this.handleRecipeImageChange.bind(this)
+    this.handleTitleChange             = this.handleTitleChange.bind(this)
     this.handleRecipeDescriptionChange = this.handleRecipeDescriptionChange.bind(this)
-    this.handleNutritionsChange = this.handleNutritionsChange.bind(this)
-    this.handleTimeChange = this.handleTimeChange.bind(this)
-    this.handleDifficultyChange = this.handleDifficultyChange.bind(this)
-    this.handlePortionsChange = this.handlePortionsChange.bind(this)
+    this.handleNutritionsChange        = this.handleNutritionsChange.bind(this)
+    this.handleTimeChange              = this.handleTimeChange.bind(this)
+    this.handleDifficultyChange        = this.handleDifficultyChange.bind(this)
+    this.handlePortionsChange          = this.handlePortionsChange.bind(this)
 
-    this.handleIngredientChange = this.handleIngredientChange.bind(this)
-    this.handleQuantityChange = this.handleQuantityChange.bind(this)
-    this.handleMeasureChange = this.handleMeasureChange.bind(this)
+    this.handleIngredientChange        = this.handleIngredientChange.bind(this)
+    this.handleQuantityChange          = this.handleQuantityChange.bind(this)
+    this.handleMeasureChange           = this.handleMeasureChange.bind(this)
 
-    this.handlePositionChange = this.handlePositionChange.bind(this)
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
+    this.handlePositionChange          = this.handlePositionChange.bind(this)
+    this.handleDescriptionChange       = this.handleDescriptionChange.bind(this)
 
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit                  = this.handleSubmit.bind(this)
 
     this.state = {
       recipe: {

@@ -7,6 +7,7 @@ class RecipeForm extends React.Component {
     super(props)
 
     this.handleCategoryChange          = this.handleCategoryChange.bind(this)
+    this.handleRecipeImageChange       = this.handleRecipeImageChange.bind(this)
     this.handleTitleChange             = this.handleTitleChange.bind(this)
     this.handleRecipeDescriptionChange = this.handleRecipeDescriptionChange.bind(this)
     this.handleNutritionsChange        = this.handleNutritionsChange.bind(this)
@@ -14,6 +15,8 @@ class RecipeForm extends React.Component {
     this.handleDifficultyChange        = this.handleDifficultyChange.bind(this)
     this.handlePortionsChange          = this.handlePortionsChange.bind(this)
     this.renderCategoriesOptions       = this.renderCategoriesOptions.bind(this)
+
+
   }
 
   componentDidMount() {
@@ -25,6 +28,7 @@ class RecipeForm extends React.Component {
   handleCategoryChange(e) {
     this.props.handleCategoryChange(e.target.value)
   }
+
 
   handleTitleChange(e) {
     this.props.handleTitleChange(e.target.value)
@@ -68,7 +72,6 @@ class RecipeForm extends React.Component {
     return (
       <div className="form">
         <h1>Новый рецепт</h1>
-
         <div className="field">
           <h2>
             <select name="category" onChange={ this.handleCategoryChange }>
@@ -76,6 +79,7 @@ class RecipeForm extends React.Component {
             </select>
           </h2>
         </div>
+
 
         <div className="field">
           <h2>

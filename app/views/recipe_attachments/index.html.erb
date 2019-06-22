@@ -15,7 +15,7 @@
     <% @recipe_attachments.each do |recipe_attachment| %>
       <tr>
         <td><%= recipe_attachment.recipe_id %></td>
-        <td><%= recipe_attachment.recipe_images %></td>
+        <td><%= recipe_attachment.recipe_images.to_s %></td>
         <td><%= link_to 'Show', recipe_attachment %></td>
         <td><%= link_to 'Edit', edit_recipe_attachment_path(recipe_attachment) %></td>
         <td><%= link_to 'Destroy', recipe_attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,5 +25,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Recipe Attachment', new_recipe_attachment_path %>

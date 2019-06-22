@@ -3,6 +3,7 @@
     url: "",
     recipe: {
       categories: @categories,
+      recipe_images: @recipe.recipe_attachments == nil ? "" : @recipe.recipe_attachments,
       title: @recipe.title == nil ? "" : @recipe.title,
       recipe_description: @recipe.recipe_description == nil ? "" : @recipe.recipe_description,
       nutritions: @recipe.nutritions == nil ? "" : @recipe.nutritions,
