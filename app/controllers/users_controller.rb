@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!
+
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
                                         :following, :followers]
 
@@ -28,7 +30,14 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find_by_email(params[:email])
   end
-  #
+
+  def authenticate_user!
+    if user_signed_in?
+      super
+    else
+      redirect_to home
+    end
+end
   # def user_params
   #   params.require(:user).permit(:email, :first_name, :last_name, {avatars: []})
   # end

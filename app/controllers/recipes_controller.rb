@@ -11,10 +11,9 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @recipe_ingredient = RecipeIngredient.new
-    @step = Step.new
     @recipe_attachments = @recipe.recipe_attachments.all
-    @ingredients = RecipeIngredient.all.as_json(only: [:quantity, :measure], include: { ingredient: { only: :name } }).to_json
+    @ingredients = RecipeIngredient.all.where(recipe_id: @recipe.id).as_json(only: [:quantity, :measure], include: { ingredient: { only: :name } }).to_json
+    @forked = Recipe.where(origin_id: @recipe.id)
   end
 
   def new

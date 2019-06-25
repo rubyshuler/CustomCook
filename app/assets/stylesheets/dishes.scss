@@ -7,14 +7,29 @@
   flex-direction: column;
   width: 768px;
 
-  h2 {
-
-  }
-
   .cookedDish{
     margin-top: 30px;
+    // background-color: yellow;
+    opacity: 30%;
     display: flex;
     justify-content: center;
+
+    .avatar {
+      img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        object-position: center;
+
+        clip-path: circle(48% at 50% 50%);
+        overflow: hidden;
+      }
+    }
+
+    .column {
+      margin-top: 8px;
+      margin-left: 16px;
+    }
 
     p {
       width: 242px;
@@ -26,7 +41,7 @@
       object-fit: none;
       object-position: center;
       width: auto;
-      max-width: 342px;
+      width: 342px;
       height: 195px;
       border-radius: 6px;
     }

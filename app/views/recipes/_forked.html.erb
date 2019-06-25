@@ -1,0 +1,24 @@
+<% @forked.each do |forked| %>
+  <div class="user_fork">
+    <div class="avatar">
+      <%= image_tag forked.user.avatar.to_s %>
+    </div>
+    <h3>
+      <%= forked.user.username %> изменил(а) рецепт
+    </h3>
+  </div>
+  <figure><%= image_tag('line2.svg') %></figure>
+  <div class="small_card">
+    <%= image_tag forked.recipe_attachments.first.recipe_image.to_s %>
+
+    <div class="info">
+      <h3><%= forked.title %></h3>
+
+      <div class="recipe_info">
+        <p><%= forked.nutritions %> ккал</p>
+        <p class="clock"><span><%= image_tag('clock.svg') %></span><%= forked.time %> мин</p>
+        <p><%= forked.difficulty %></p>
+      </div>
+    </div>
+    </div>
+<% end %>

@@ -26,6 +26,7 @@ class DishesController < ApplicationController
   # POST /dishes.json
   def create
     @recipe = Recipe.find(params[:recipe_id])
+    @dish.recipe_id = @recipe.id
     @dish = Dish.new(dish_params)
     @dish.user_id = current_user.id
 

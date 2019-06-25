@@ -1,28 +1,19 @@
-<p id="notice"><%= notice %></p>
+<% @dishes.each do |dish| %>
+  <section class="review">
+    <div class="user_fork">
+      <div class="avatar">
+        <%= image_tag dish.user.avatar.to_s %>
+      </div>
+      <h3>
+        <%= dish.user.username %> изменил(а) рецепт
+      </h3>
+    </div>
 
-<h1>Dishes</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Review</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @dishes.each do |dish| %>
-      <tr>
-        <td><%= dish.review %></td>
-        <td><%= link_to 'Show', dish %></td>
-        <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-        <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Dish', new_dish_path %>
+    <div class="cookedDish">
+      <p>
+        <%= dish.review %>
+      </p>
+      <%= image_tag dish.dish_image_url.to_s %>
+    </div>
+  </section>
+<% end %>

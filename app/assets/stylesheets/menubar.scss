@@ -19,14 +19,78 @@ nav {
   }
 
   .avatar {
+    align-self: center;
     display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
     right: 0;
     margin-right: 72px;
-    .loginNav {
-      a:nth-child(2) {
-        font-size: 14px;
-        font-style: normal;
-      }
+
+  }
+}
+
+.loginNav {
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+
+  img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    object-position: center;
+
+    clip-path: circle(48% at 50% 50%);
+    overflow: hidden;
+  }
+
+  a:nth-child(2) {
+    font-size: 14px;
+    font-style: normal;
+    font-family: Helvetica;
+    margin: 0px;
+  }
+
+  a {
+    text-align: center;
+    align-content: center;
+    align-self: center;
+    font-family: Helvetica;
+    margin-right: 8px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    a:nth-child(2){
+      margin-top: -8px;
+      opacity: .5;
+      font-size: 12px;
+    }
+  }
+}
+
+
+.newitemslink {
+  margin: 0px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  span {
+    display: flex;
+    margin: 0px;
+    margin-right: 16px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    a {
+      margin: 0px;
+      margin-left: 8px;
+      font-family: Helvetica;
     }
   }
 }

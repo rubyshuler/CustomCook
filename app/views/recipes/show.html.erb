@@ -3,59 +3,95 @@
 
 <div class="therecipe">
 
-  <h1><%= @recipe.title %></h1>
-
-  <div class="image">
-    <%= render partial: 'recipe_attachments/recipe_attachments', collection: @recipe.recipe_attachments %>
+  <div class="header">
+    <h1><%= @recipe.title %></h1>
+    <h2><%= link_to Category.find(@recipe.category_id).category_name, category_path(@recipe.category_id) %></h2>
   </div>
 
-  <div class="author">
-    <h3><%= @recipe.user.username %></h3>
-    <button type="button" name="button">
-      <% if can? :update, Recipe %>
-        <%= link_to 'Редактировать рецепт', edit_recipe_path(@recipe) %>
-      <% end %>
-    </button>
+  <div class="recipe_images">
+    <%= render partial: 'recipe_attachments/recipe_attachments', collection: @recipe.recipe_attachments %>
   </div>
 
   <h3 class="recipe_description"><%= @recipe.recipe_description %></h3>
 
   <h2>Общая информация</h2>
-  <h2><%= link_to Category.find(@recipe.category_id).category_name, category_path(@recipe.category_id) %></h2>
 
-  <div class="info">
-    <h3><%= @recipe.nutritions %>ккал</h3>
-    <h3><%= @recipe.time %>мин</h3>
-    <h3><%= @recipe.difficulty %></h3>
+  <div class="info-nutritions">
+    <div class="info">
+      <h3><%= @recipe.nutritions %> ккал</h3>
+      <h3><%= @recipe.time %> мин</h3>
+      <h3><%= @recipe.difficulty %></h3>
+    </div>
+
+    <div class="nutritions">
+      <h3>Белки..........6г</h3>
+      <h3>Жиры...........3г</h3>
+      <h3>Углеводы.....2г</h3>
+    </div>
   </div>
 
-  <h2>Ингредиенты <span><%= image_tag('additem.svg') %> <%= link_to 'Добавить ингредиент', new_recipe_recipe_ingredient_path(@recipe) %></span></h2>
+
+  <h2>Ингредиенты</h2>
   <h3 class="portions">Порции <span><span></span><%= @recipe.portions %></span></h3>
 
   <section class="recipe_ingredients" id="recipe_ingredients" data-props="<%= @ingredients %>">
   </section>
 
-  <h2>Инструкция приготовления <span><%= image_tag('additem.svg') %> <%= link_to 'Добавить шаг', new_recipe_step_path(@recipe) %></span></h2>
+  <h2>Как приготовить?</h2>
   <%= render partial: 'steps/step', collection: @recipe.steps %>
 
-  <div class="links">
+  <div class="author">
+    <div class="recipe_author">
+      <%= image_tag @recipe.user.avatar.to_s %>
 
-  </div>
-
-  <section class="reviews">
-    <div class="cooking">
-      <div class="forked">
-        <%= image_tag('fork.svg') %>
-        <%= link_to 'Изменить рецепт', fork_recipe_path(@recipe) %>
-      </div>
-
-      <div class="cooked">
-        <%= image_tag('cooked.svg') %>
-        <%= link_to 'Уже готово!', new_recipe_dish_path(@recipe) %>
+      <div class="username">
+        <p>Автор рецепта</p>
+        <h3><%= @recipe.user.username %></h3>
+        <p>Подписаться</p>
       </div>
     </div>
 
+    <div class="dish">
+      <%= link_to 'Я приготовил!', new_recipe_dish_path(@recipe) %>
+    </div>
+  </div>
+
+
+  <section class="reviews">
     <h2>История рецепта</h2>
-    <%= render partial: 'dishes/dish', collection: @recipe.dishes %>
+    <div class="dish">
+      <%= render partial: 'dishes/dish', collection: @recipe.dishes %>
+      <p> Рецепт приготовил(и) <%= link_to recipe_dishes_path(@recipe) do %> <span><%= @recipe.dishes.count %></span> человек<% end %></p>
+    </div>
+    <% if @recipe.dishes.present? %>
+      <figure><%= image_tag('line.svg') %></figure>
+    <% end %>
+    <%= render partial: 'recipes/forked' %>
   </section>
+
+  <h2>Еще категории</h2>
+  <% @cat = Category.order("RANDOM()").limit(3) %>
+  <section class="categories">
+    <% @cat.each do |category| %>
+      <h3 class="category_tag"><%= category.category_name %></h3>
+    <% end %>
+  </section>
+</div>
+
+<div class="cooking">
+  <div>
+    <%= link_to fork_recipe_path(@recipe) do %>
+    <%= image_tag('fork.svg') %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to new_recipe_dish_path(@recipe) do %>
+    <%= image_tag('cooked.svg') %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= image_tag('saved.svg') %>
+  </div>
 </div>

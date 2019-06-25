@@ -1,10 +1,11 @@
 <div class="step">
-  <div class="">
+
+  <div class="position">
     <h3>Шаг <%= step.position %></h3>
     <p><%= step.description %></p>
   </div>
 
-  <div class="">
+  <div class="image">
     <% if step.step_image_url %>
       <%= image_tag(step.step_image_url.to_s) %>
     <% end %>

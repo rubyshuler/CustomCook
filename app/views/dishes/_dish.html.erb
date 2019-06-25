@@ -1,6 +1,3 @@
-<div class="cookedDish">
-  <p>
-    <%= dish.review %>
-  </p>
-  <%= image_tag(dish.dish_image_url.to_s) %>
+<div class="avatar">
+  <%= image_tag dish.user.avatar.to_s %>
 </div>

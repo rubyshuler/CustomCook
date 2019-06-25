@@ -11,10 +11,9 @@ export default class RecipeIngredient extends React.Component {
     const { name } = ingredient
 
     return (
-      <div className="ingredients">
+      <div className="ingredient">
         <h3>
-          { quantity }
-          { measure }
+          { quantity } { measure }
         </h3>
         <h3>
           { name }
