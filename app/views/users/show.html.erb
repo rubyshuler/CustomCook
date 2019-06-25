@@ -1,30 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<section class="profile">
-  <div class="avatar">
-    <%= image_tag @user.avatar.to_s %>
-  </div>
-
-  <div class="info">
-    <div class="">
-      <h3><%= @user.username %></h3>
-
-      <span class="button">
-        <% if can? :manage, User %>
-          <%= link_to "Редактировать профиль", edit_user_registration_path(current_user) %>
-        <% end %>
-      </span>
+<section>
+  <section class="profile">
+    <div class="avatar-profile">
+      <%= image_tag @user.avatar.to_s %>
     </div>
 
-    <%= render 'stats' %>
-    <%= render 'follow_form' %>
+    <div class="info">
+      <div class="">
+        <h3><%= @user.username %></h3>
 
-  </div>
+        <span class="button">
+          <% if can? :manage, User %>
+          <%= link_to "Редактировать профиль", edit_user_registration_path(current_user) %>
+          <% end %>
+        </span>
+      </div>
 
-</section>
+      <%= render 'stats' %>
+      <%= render 'follow_form' %>
 
-<section>
-  <% if can? :create, Recipe %>
+    </div>
+
+  </section>
+
+  <section>
+    <% if can? :create, Recipe %>
     <%= link_to new_recipe_path, {:action => 'create'} do %>
     <div class="card add_recipe">
       <div class="info">
@@ -33,28 +34,28 @@
       </div>
     </div>
     <% end %>
-  <% end %>
+    <% end %>
 
-  <% @user.recipes.each do |recipe| %>
-  <%= link_to recipe, {:action => 'show', :id => recipe.id} do -%>
+    <% @user.recipes.each do |recipe| %>
+    <%= link_to recipe, {:action => 'show', :id => recipe.id} do -%>
     <div class="card">
 
 
-        <div class="image">
-          <%#= image_tag(recipe.recipe_image_url.to_s) %>
-        </div>
-
-        <h3><%= recipe.title %></h3>
-
-        <div class="recipe_attr">
-          <p><%= recipe.nutritions %>ккал</p>
-          <p><%= recipe.difficulty %></p>
-          <p class="clock"><span><%= image_tag('clock.svg') %></span><%= recipe.time %>мин</p>
-        </div>
+      <div class="image">
+        <%#= image_tag(recipe.recipe_image_url.to_s) %>
       </div>
+
+      <h3><%= recipe.title %></h3>
+
+      <div class="recipe_attr">
+        <p><%= recipe.nutritions %>ккал</p>
+        <p><%= recipe.difficulty %></p>
+        <p class="clock"><span><%= image_tag('clock.svg') %></span><%= recipe.time %>мин</p>
+      </div>
+    </div>
     <% end %>
-  <% end %>
+    <% end %>
 
+  </section>
+  
 </section>
-
-<footer></footer>

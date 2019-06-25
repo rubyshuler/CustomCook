@@ -27,17 +27,20 @@
         </div>
         <% end %>
 
+        <% if user_signed_in? %>
         <div class="loginNav">
-          <% if user_signed_in? %>
-          <div class="">
+          <div class="username">
             <%= link_to current_user.username, current_user%>
             <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
           </div>
           <%= image_tag current_user.avatar.to_s %>
-          <% else %>
+        </div>
+        <% else %>
+        <div class="log_in">
           <%= link_to 'Зарегистрироваться', new_user_registration_path   %>
           <%= link_to 'Войти', new_user_session_path  %>
-          <% end %>
+        </div>
+        <% end %>
         </div>
       </div>
     </nav>

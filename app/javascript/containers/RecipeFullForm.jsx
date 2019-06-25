@@ -11,7 +11,6 @@ export default class RecipeFullForm extends React.Component {
   constructor(props) {
     super(props)
     this.handleCategoryChange          = this.handleCategoryChange.bind(this)
-    this.handleRecipeImageChange       = this.handleRecipeImageChange.bind(this)
     this.handleTitleChange             = this.handleTitleChange.bind(this)
     this.handleRecipeDescriptionChange = this.handleRecipeDescriptionChange.bind(this)
     this.handleNutritionsChange        = this.handleNutritionsChange.bind(this)
@@ -234,6 +233,7 @@ export default class RecipeFullForm extends React.Component {
           onClick={this.handleSubmit}
           type="submit"
           value="Submit"
+          className="submitButton"
         />
       </div>
     )

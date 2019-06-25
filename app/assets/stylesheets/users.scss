@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+section {
+  
+}
+
 .profile {
   margin-top: 32px;
   width: 664px;
@@ -28,14 +32,19 @@
     padding-right: 15px;
   }
 
-  .avatar {
-    display: block;
-    width: 160px;
-    height: 160px;
-    background-color: pink;
-    border-radius: 80px;
+
+
+  .avatar-profile {
+    img{
+      display: block;
+      width: 160px;
+      height: 160px;
+      background-color: pink;
+      border-radius: 80px;
+    }
   }
 }
+
 
 .button {
 
