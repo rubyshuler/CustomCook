@@ -30,6 +30,41 @@ nav {
   }
 }
 
+.log_in {
+  display: flex;
+  align-content: center;
+  flex-direction: row;
+
+  a {
+    padding: 16px 32px;
+    margin-right: 16px;
+    border-radius: 8px;
+    font-size: 20px;
+    background-color: #6FCF97;
+    color: white;
+    font-weight: normal;
+    margin-top: 0px;
+  }
+}
+
+.log_in {
+  display: flex;
+  align-content: center;
+  flex-direction: row;
+
+  a {
+    padding: 8px 16px;
+    margin-right: 16px;
+    border-radius: 8px;
+    font-size: 20px;
+    background-color: #FAA54B;
+    color: white;
+    font-weight: normal;
+    margin-top: 0px;
+    font-family: Helvetica;
+  }
+}
+
 .loginNav {
   display: flex;
   justify-content: center;

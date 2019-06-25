@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :categories
   root to: 'pages#home'
 
-
   devise_for :users
   get 'users/:id' => 'users#show'
   resources :relationships,       only: [:create, :destroy]
@@ -31,5 +30,4 @@ Rails.application.routes.draw do
     end
   end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
