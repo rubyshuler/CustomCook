@@ -12,8 +12,6 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
-
-    resources :favorite_recipes, only: [:create, :destroy]
   end
 
   post '/recipes/new' => 'recipes#create'

@@ -36,23 +36,6 @@ nav {
   flex-direction: row;
 
   a {
-    padding: 16px 32px;
-    margin-right: 16px;
-    border-radius: 8px;
-    font-size: 20px;
-    background-color: #6FCF97;
-    color: white;
-    font-weight: normal;
-    margin-top: 0px;
-  }
-}
-
-.log_in {
-  display: flex;
-  align-content: center;
-  flex-direction: row;
-
-  a {
     padding: 8px 16px;
     margin-right: 16px;
     border-radius: 8px;
@@ -67,8 +50,11 @@ nav {
 
 .loginNav {
   display: flex;
+  // flex-direction: column;
   justify-content: center;
   margin-top: 0px;
+  font-family: Helvetica;
+
 
   img {
     width: 56px;
@@ -80,31 +66,19 @@ nav {
     overflow: hidden;
   }
 
-  a:nth-child(2) {
-    font-size: 14px;
-    font-style: normal;
+  a:nth-child(2){
+    margin-top: -8px;
+    opacity: .5;
+    font-size: 12px;
     font-family: Helvetica;
-    margin: 0px;
   }
 
-  a {
-    text-align: center;
-    align-content: center;
-    align-self: center;
-    font-family: Helvetica;
-    margin-right: 8px;
-  }
-
-  div {
+  .username {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    a:nth-child(2){
-      margin-top: -8px;
-      opacity: .5;
-      font-size: 12px;
-    }
+    font-family: Helvetica;
+    
   }
 }
 
