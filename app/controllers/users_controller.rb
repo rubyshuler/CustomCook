@@ -31,13 +31,6 @@ class UsersController < ApplicationController
     @user = User.find_by_email(params[:email])
   end
 
-  def authenticate_user!
-    if user_signed_in?
-      super
-    else
-      redirect_to home
-    end
-end
   # def user_params
   #   params.require(:user).permit(:email, :first_name, :last_name, {avatars: []})
   # end

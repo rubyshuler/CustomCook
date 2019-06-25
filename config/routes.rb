@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :categories
-  root :to => 'pages#guest', :constraints => lambda{|req| !req.session[:user_id].blank? }
   root to: 'pages#home'
 
 
