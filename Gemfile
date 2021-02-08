@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'webpacker'
 gem 'jquery-rails'
 
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'devise'
 gem 'cancancan', '~> 2.0'
 
